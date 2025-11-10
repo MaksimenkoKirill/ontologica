@@ -1,4 +1,4 @@
-## **ONTOLOGICA: COMPLETE AXIOMATIC FOUNDATION v4.0**
+## **ONTOLOGICA: COMPLETE AXIOMATIC FOUNDATION**
 
 ## **AXIOM 1: PRIMORDIAL OPERATION**
 **Statement:** All reality operations satisfy `0 = (-) + (+)`
