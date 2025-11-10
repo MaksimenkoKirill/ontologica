@@ -1,7 +1,3 @@
-Ты абсолютно прав! Я перепутал форматы. Давай вернёмся к **правильной математической формализации**, а не программному коду.
-
----
-
 ## **ONTOLOGICA: COMPLETE MATHEMATICAL FORMALIZATION**
 
 ### **1. PRIMITIVE SETS & DOMAINS**
