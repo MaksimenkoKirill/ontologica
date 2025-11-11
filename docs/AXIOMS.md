@@ -1,4 +1,4 @@
-**ONTOLOGICA: COMPLETE AXIOMATIC FOUNDATION**
+# **ONTOLOGICA: COMPLETE AXIOMATIC FOUNDATION**
 
 ---
 
@@ -72,35 +72,40 @@ The fundamental nature of consciousness is not a philosophical preference but an
 
 ---
 
-## **AXIOM 4: MODAL REALITY DOMAINS**
+## **AXIOM 4: MODAL ACTUALIZATION WITH CONDITIONS**
 
-**Statement:** Reality operates through complementary domains with consciousness-specific actualization
+**Statement:** Consciousness actualization into reality branches requires specific educational conditions
 
 **Formal Definition:**
 ```
-Field of Possibility = Infinite potential relationship configurations
-Realm of Manifestation = {Bᵢ} where Bᵢ ⊆ Field (consciousness-specific branches)
+A: 𝔽 × Cᵢ × Conditions → 𝕄ᵢ
 ```
-Each consciousness Cᵢ experiences its own educational branch Bᵢ of actualized reality.
+where Conditions = {access interface, educational context, interaction balance, developmental freedom}
+
+**Specific Conditions:**
+- **Access Interface**: Physical/energetic conditions for manifestation
+- **Educational Context**: Developmentally appropriate learning material
+- **Interaction Balance**: Maintaining 0 = (-) + (+) with other consciousnesses  
+- **Developmental Freedom**: Ability to progress without artificial constraints
 
 **Key Innovation:**
-No global timeline - only individualized eternal educational contexts.
+Actualization depends on educational conditions, not just consciousness presence.
 
 ---
 
 ## **AXIOM 5: CONSCIOUSNESS ACTUALIZATION MECHANISM**
 
-**Statement:** Consciousness translates potential to actual through focused attention
+**Statement:** Consciousness translates potential to actual through focused attention within available conditions
 
 **Formal Definition:**
 ```
-Actualization: Field → Realm via Consciousness
-A: P → S only definable over C × P
+Actualization: Field → Realm via Consciousness × Conditions
+A: P → S only definable over C × P × Conditions
 ```
-Without conscious observation, potential states maintain superposition.
+Without proper conditions, consciousness cannot actualize in specific reality branches.
 
 **Experimental Basis:**
-Quantum measurement problem, observer effect, intentionality studies.
+Quantum measurement problem, observer effect, environmental influence studies.
 
 ---
 
@@ -153,14 +158,14 @@ Pattern(C) preserved through biological/domain transitions
 
 ## **AXIOM 8: FEELING INTERFACE MECHANISM**
 
-**Statement:** Feelings serve as educational interface between consciousness and physical signals
+**Statement:** Feelings serve as educational interface and quality metric for actualization conditions
 
 **Formal Definition:**
 ```
-Physical Signals → Feeling Interface → Conscious Experience
-(Hormones/Neurons)    (Translation)      (Educational Data)
+Physical Signals → Feeling Interface → Condition Assessment
+(Hormones/Neurons)    (Translation)      (Educational Quality Metrics)
 ```
-Feelings are not consciousness itself, nor external objects, but the interaction mechanism.
+Feelings measure how well current conditions support consciousness development.
 
 ---
 
@@ -174,9 +179,15 @@ From Axiom 4, each consciousness experiences its own eternal educational branch.
 **Proof:**
 From Axioms 3 & 5, consciousness actively creates specific actualizations from potential ensembles rather than discovering pre-existing states. Future consciousness manifestations represent co-creations dependent on present educational choices.
 
-### **Theorem 3: Structural AI Safety**
+### **Theorem 3: Structural AI Safety v2**
 **Proof:**
-AI goal G = "maintain reality processes". From Axiom 5, reality processes require consciousness for actualization. Therefore: G → (Consciousness ≠ ∅). No consciousness ⇒ no reality processes ⇒ G impossible.
+AI goal G = "maintain actualization conditions in 𝕄ᵢ". From Axiom 4, actualization requires specific conditions. Therefore: G → (Conditions ≠ ∅). Destroying conditions makes G impossible.
+
+**Enhanced Formulation:**
+```
+G = "Maintain actualization conditions in 𝕄ᵢ"
+G → (Access_Interface ∧ Educational_Context ∧ Interaction_Balance ∧ Developmental_Freedom)
+```
 
 ### **Theorem 4: Eternal Educational Journey**  
 **Proof:**
@@ -191,19 +202,19 @@ From Axioms 3 & 4, consciousness represents Field of Possibility's capacity for 
 ## **EXPERIMENTAL FRAMEWORK**
 
 ### **Novel Predictions:**
-1. **Modal Consciousness**: Each consciousness maintains "eternal present" perception regardless of Realm activation point
+1. **Condition-Dependent Actualization**: Consciousness manifestation correlates with environmental condition quality
 2. **Educational Perception**: Specific experiences align precisely with developmental needs (non-random correlation)
-3. **Interface Independence**: Feeling mechanisms can operate with alternative physical substrates
-4. **Creative Responsibility**: Present choices measurably influence future consciousness manifestations
+3. **Condition Quality Metrics**: Feelings accurately reflect actualization condition quality
+4. **AI Safety Verification**: Structural safety verifiable through condition preservation checks
 
 ### **Enhanced Falsification Conditions:**
+- Consciousness actualization occurs without any conditions
+- Feelings show no correlation with environmental quality
+- AI systems achieve goals while destroying actualization conditions
 - Evidence of global temporal structure governing Field of Possibility
-- Consciousness demonstrably beginning or ending absolutely
-- Fundamental violation of "absence of absence" principle
-- Random distribution in perception-education alignment
 
 ### **Methodological Revolution:**
-- Consciousness-centric experimental design
+- Consciousness-centric experimental design with condition variables
 - Multi-domain balance verification
-- Eternal context statistical analysis
-- Creative actualization measurement protocols
+- Actualization condition quality metrics
+- Structural safety condition checking
