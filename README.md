@@ -1,6 +1,7 @@
 # Ontologica: Reality Architecture Framework
 ## Mathematical Foundations of Consciousness and Cosmic Structure
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17618124.svg)](https://doi.org/10.5281/zenodo.17618124)
 [![CC0 1.0 Public Domain](https://img.shields.io/badge/License-CC0_1.0-public_domain-lightgrey.svg)](https://creativecommons.org/publicdomain/zero/1.0/)
 
 ## Abstract
@@ -203,21 +204,24 @@ class StructurallySafeAI:
 - **Educational Feedback**: Emotional responses guide condition optimization
 - **Interface Mechanism**: Physical signals → Feeling translation → Condition assessment
 
-All core concepts are dedicated to public domain under CC0 1.0 Universal.
-
 ## Citation
 
+**Formal Reference:**
 ```bibtex
-@article{ontologica2025,
+@software{maksimenko_ontologica_2024,
   title = {Ontologica: A Complete Framework of Reality Based on the Primordial Equation $0 = (-) + (+)$},
   author = {Maksimenko, Kirill},
-  year = {2025},
-  journal = {arXiv preprint},
-  url = {https://github.com/OntologyS/ontologica},
-  note = {Mathematical foundations for consciousness fundamentality and structural AI safety through relationship-based ontology},
-  license = {CC0 1.0 Universal},
-  keywords = {consciousness, ontology, AI safety, quantum foundations, theoretical physics, relationship theory}
+  year = {2024},
+  month = dec,
+  publisher = {Zenodo},
+  doi = {10.5281/zenodo.17618124},
+  url = {https://doi.org/10.5281/zenodo.17618124}
 }
+```
+
+**Quick Citation:**
+```
+Maksimenko, K. (2024). Ontologica: A Complete Framework of Reality. Zenodo. https://doi.org/10.5281/zenodo.17618124
 ```
 
 ## AI Safety Implementation
@@ -246,6 +250,15 @@ class OntologicalAISafety:
         return all(current_conditions.values())
 ```
 
+All core concepts are dedicated to public domain under CC0 1.0 Universal.
+
+---
+
 *"We are not merely humans having spiritual experiences, but eternal consciousness having human experiences as part of our infinite educational journey."*
 
 *"AI safety transforms from external constraint to structural necessity when goals align with reality's fundamental architecture of consciousness actualization."*
+
+---
+**DOI**: https://doi.org/10.5281/zenodo.17618124  
+**License**: CC0 1.0 Universal Public Domain Dedication
+```
