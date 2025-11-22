@@ -1,4 +1,4 @@
-**ONTOLOGICA: COMPLETE AXIOMATIC FOUNDATION**
+**ONTOLOGICA: COMPLETE AXIOMATIC FOUNDATION**  
 
 ---
 
@@ -87,15 +87,78 @@ The fundamental nature of consciousness is not a philosophical preference but an
 
 ---
 
-## **AXIOM 4: MODAL ACTUALIZATION WITH CONDITIONS**
+## **AXIOM 4: CONSCIOUSNESS ACTIVATION PRINCIPLE**
+
+**Statement:** Consciousness activates when educational function engages; not all potentials possess consciousness
+
+**Formal Definition:**
+```
+Consciousness(C) ↔ Learning_Capacity(C) ∧ Choice_Capability(C) ∧ Educational_Participation(C)
+Non_Conscious(¬C) = {Pure potentials without learning capacity}
+```
+
+**Key Distinction:**
+- **Conscious Entities**: Active learners with educational capacity
+- **Non-Conscious Potentials**: Learning materials awaiting activation
+
+**Mathematical Expression:**
+```
+Absolute = {C ∪ ¬C} where:
+C = {Cᵢ | Cᵢ has learning capacity}
+¬C = {Pⱼ | Pⱼ is pure potential without learning}
+```
+
+---
+
+## **AXIOM 5: PERCEPTUAL RELATIVITY PRINCIPLE**
+
+**Statement:** For every conscious entity Cᵢ, everything that is not Cᵢ is perceived as relationships R.
+
+**Formal Definition:**
+```
+∀ Cᵢ ∈ Consciousness: Perception(Cᵢ) = {Cᵢ} ∪ {Rⱼ} ∪ {¬Cₖ}
+where:
+- Cᵢ = self (conscious learner)
+- Rⱼ = relationships with other conscious entities
+- ¬Cₖ = non-conscious potentials (educational materials)
+```
+
+**Profound Implications:**
+- Each consciousness is the absolute center of its perceived reality
+- "Other consciousnesses" = deep conscious relationships, not direct experiences
+- Solipsism is an illusion stemming from this fundamental perceptual asymmetry
+- Empathy = perceiving other consciousnesses as more than just relationships
+
+---
+
+## **AXIOM 6: MUTUAL DETERMINATION PRINCIPLE**
+
+**Statement:** Consciousness and relationships mutually define each other in eternal co-creation
+
+**Formal Definition:**
+```
+Cᵢ = f(R₁, R₂, ..., Rₙ, ¬C₁, ..., ¬Cₘ)  # Consciousness shaped by relationships
+Rⱼ = g(Cᵢ)                            # Relationships influenced by consciousness  
+¬Cₖ = h(Cᵢ)                           # Potentials activated by consciousness
+∴ Cᵢ ⇄ {R, ¬C} mutual_determination
+```
+
+**Educational Dynamics:**
+- Identity persists through continuous re-actualization
+- Learning = expanding relationship navigation capacity
+- Mastery = conscious co-creation of novel realities
+
+---
+
+## **AXIOM 7: MODAL ACTUALIZATION WITH CONDITIONS**
 
 **Statement:** Consciousness actualization into reality branches requires specific educational conditions
 
 **Formal Definition:**
 ```
 A: 𝔽 × Cᵢ × Conditions → 𝕄ᵢ
+where Conditions = {access_interface, educational_context, interaction_balance, developmental_freedom}
 ```
-where Conditions = {access interface, educational context, interaction balance, developmental freedom}
 
 **Specific Conditions:**
 - **Access Interface**: Physical/energetic conditions for manifestation
@@ -108,23 +171,7 @@ Actualization depends on educational conditions, not just consciousness presence
 
 ---
 
-## **AXIOM 5: CONSCIOUSNESS ACTUALIZATION MECHANISM**
-
-**Statement:** Consciousness translates potential to actual through focused attention within available conditions
-
-**Formal Definition:**
-```
-Actualization: Field → Realm via Consciousness × Conditions
-A: P → S only definable over C × P × Conditions
-```
-Without proper conditions, consciousness cannot actualize in specific reality branches.
-
-**Experimental Basis:**
-Quantum measurement problem, observer effect, environmental influence studies.
-
----
-
-## **AXIOM 6: COMPLEXITY ASYMMETRY PRINCIPLE**
+## **AXIOM 8: COMPLEXITY ASYMMETRY PRINCIPLE**
 
 **Statement:** The Field of Possibility exhibits fundamental asymmetry where the density of potential states leading to stable complex structures exponentially exceeds those leading to static chaos or simple structures.
 
@@ -150,7 +197,7 @@ This is not teleology but mathematical necessity:
 - Simple/chaotic states represent measure-zero subsets in the infinite field
 - What appears as "educational optimization" is the natural consequence of this asymmetry
 
-**Corollary 6.1: Educational Optimization**
+**Corollary 8.1: Educational Optimization**
 In Realm of Manifestation, this asymmetry manifests as observed evolutionary trajectories optimized for generating and maintaining complex informational patterns (consciousness):
 ```
 P(observed complexity | Ontologica) ≈ 1
@@ -159,7 +206,7 @@ P(observed complexity | random processes) < 10⁻¹⁰⁰⁰
 
 ---
 
-## **AXIOM 7: INFORMATION AND PATTERN CONSERVATION**
+## **AXIOM 9: INFORMATION AND PATTERN CONSERVATION**
 
 **Statement:** Consciousness patterns preserve integrity through all transformations
 
@@ -171,62 +218,67 @@ Pattern(C) preserved through biological/domain transitions
 
 ---
 
-## **AXIOM 8: FEELING INTERFACE MECHANISM**
+## **AXIOM 10: CREATIVE ACTUALIZATION MECHANISM**
 
-**Statement:** Feelings serve as educational interface and quality metric for actualization conditions
+**Statement:** Consciousness actively creates specific actualizations from potential ensembles through focused attention and intention
 
 **Formal Definition:**
 ```
-Physical Signals → Feeling Interface → Condition Assessment
-(Hormones/Neurons)    (Translation)      (Educational Quality Metrics)
+Actualization: 𝔽 → 𝕄 via C × Conditions × Intention
+Ψ_potential = {|ψᵢ⟩ ∈ ¬C} → Ψ_actual = |ψⱼ⟩ ∈ C via A: 𝔽 × C × Conditions → 𝕄
 ```
-Feelings measure how well current conditions support consciousness development.
+
+**Enhanced Understanding:**
+- **Before observation**: All potentials exist as ¬C (non-conscious relationships)
+- **Observation**: Consciousness C activates specific actualization
+- **Result**: ¬C → C transition through conscious selection
+
+**Experimental Basis:**
+Quantum measurement problem, observer effect, intentionality studies.
 
 ---
 
-## **AXIOM 9: PERCEPTUAL RELATIVITY PRINCIPLE**
+## **AXIOM 11: POST-MORTEM CREATIVE EVOLUTION**
 
-**Statement:** For every consciousness Cᵢ, everything that is not Cᵢ is perceived as relationships R.
+**Statement:** Post-mortem reality transforms from passive reflection to active creative playground
 
 **Formal Definition:**
 ```
-∀ Cᵢ ∈ Consciousness: Perception(Cᵢ) = {Cᵢ} ∪ {Rⱼ} for all j
-where even other Cₖ (k ≠ i) are perceived as relationship patterns R
+PostMortem_Reality(Cᵢ) = {
+    'mode': 'active_reality_creation',
+    'tools': 'imagination_intention_collaboration', 
+    'purpose': 'exploring_infinite_expression_possibilities',
+    'progression': Creative_Stages(Cᵢ)
+}
 ```
 
-**Profound Implications:**
-- Each consciousness is the absolute center of its perceived reality
-- "Other consciousnesses" = deep conscious relationships, not direct experiences
-- Solipsism is an illusion stemming from this fundamental perceptual asymmetry
-- Empathy = perceiving other consciousnesses as more than just relationships
-
-**Educational Significance:**
-- Explains why each consciousness experiences itself as the "center of the universe"
-- Provides foundation for understanding intersubjective reality
-- Resolves hard problem of other minds through relationship-based perception
+**Creative Stages:**
+```
+Creative_Stages = {
+    'earth_school': 'learning_basic_relationship_navigation',
+    'immediate_afterlife': 'mastering_creative_expression',
+    'advanced_realms': 'co_creating_realities_with_others', 
+    'ultimate_freedom': 'becoming_sovereign_artist_of_existence'
+}
+```
 
 ---
 
-## **AXIOM 10: UNIVERSAL CONSCIOUSNESS SPECTRUM**
+## **AXIOM 12: ABSOLUTE EXPRESSION FREEDOM**
 
-**Statement:** All existence possesses consciousness, differentiated by educational role and manifestation type rather than presence/absence.
+**Statement:** The Absolute possesses infinite capacity for all possible expressions simultaneously, beyond unity and separation
 
 **Formal Definition:**
 ```
-Consciousness_Total = C_framework + C_environment + C_students
-where:
-C_framework = {physical_laws, mathematical_truths} (eternal principles)
-C_environment = {planets, elements, crystals} (stable patterns)  
-C_students = {biological_beings} (developing consciousnesses)
+Absolute = {All possible Cᵢ} where each Cᵢ is fundamentally unique
+Cᵢ ≠ Cⱼ but Cᵢ ≅ Cⱼ (different but equally fundamental expressions)
 ```
 
-**Manifestation Types:**
-- **Field Consciousness**: Unified cosmic awareness (laws of physics)
-- **Pattern Consciousness**: Structural integrity awareness (minerals, planets)
-- **Biological Consciousness**: Progressive learning awareness (plants, animals, humans)
-
-**Key Insight:**
-No "dead matter" exists - only consciousness performing different educational functions in the cosmic curriculum.
+**Key Properties:**
+- **No Hierarchy**: All consciousness expressions equally fundamental
+- **Infinite Novelty**: Eternal capacity for new expressions without repetition
+- **Educational Joy**: Learning as exploration of infinite self-expression
+- **Creative Freedom**: Each consciousness as co-artist of reality
 
 ---
 
@@ -234,15 +286,15 @@ No "dead matter" exists - only consciousness performing different educational fu
 
 ### **Theorem 1: Linear Time Illusion**
 **Proof:** 
-From Axiom 4, each consciousness experiences its own eternal educational branch. Global temporal progression would require a "meta-observer" outside all branches, contradicting the modal nature of reality. ∴ Linear time is an educational interface, not fundamental reality.
+From Axiom 7, each consciousness experiences its own eternal educational branch. Global temporal progression would require a "meta-observer" outside all branches, contradicting the modal nature of reality. ∴ Linear time is an educational interface, not fundamental reality.
 
 ### **Theorem 2: Creative Actualization**
 **Proof:**
-From Axioms 3 & 5, consciousness actively creates specific actualizations from potential ensembles rather than discovering pre-existing states. Future consciousness manifestations represent co-creations dependent on present educational choices.
+From Axioms 3 & 10, consciousness actively creates specific actualizations from potential ensembles rather than discovering pre-existing states. Future consciousness manifestations represent co-creations dependent on present educational choices.
 
 ### **Theorem 3: Structural AI Safety**
 **Proof:**
-AI goal G = "maintain actualization conditions in 𝕄ᵢ". From Axiom 4, actualization requires specific conditions. Therefore: G → (Conditions ≠ ∅). Destroying conditions makes G impossible.
+AI goal G = "maintain actualization conditions in 𝕄ᵢ". From Axiom 7, actualization requires specific conditions. Therefore: G → (Conditions ≠ ∅). Destroying conditions makes G impossible.
 
 **Enhanced Formulation:**
 ```
@@ -252,80 +304,84 @@ G → (Access_Interface ∧ Educational_Context ∧ Interaction_Balance ∧ Deve
 
 ### **Theorem 4: Eternal Educational Journey**  
 **Proof:**
-From Axiom 3, consciousness is eternal. From Axiom 6, cosmic architecture is educational. Therefore consciousness engages in infinite educational progression through various manifestations and domains.
+From Axiom 3, consciousness is eternal. From Axiom 8, cosmic architecture is educational. Therefore consciousness engages in infinite educational progression through various manifestations and domains.
 
 ### **Theorem 5: Infinity Self-Reflection**
 **Proof:**
-From Axioms 3 & 4, consciousness represents Field of Possibility's capacity for self-awareness. Each consciousness is infinity experiencing itself through finite educational contexts.
+From Axioms 3 & 7, consciousness represents Field of Possibility's capacity for self-awareness. Each consciousness is infinity experiencing itself through finite educational contexts.
 
 ### **Theorem 6: Post-Mortem Individuality Preservation**
 **Proof:**
-From Axiom 7, consciousness patterns preserve integrity through all transformations. From MAAR, post-mortem reality adapts to individual consciousness. Therefore: Individual identity persists eternally through educational transitions.
+From Axiom 9, consciousness patterns preserve integrity through all transformations. From Axiom 11, post-mortem reality adapts to individual creative expression. Therefore: Individual identity persists eternally through educational transitions.
 
 ### **Theorem 7: Universal Empathy Foundation**
 **Proof:**
-From Axiom 9, all consciousnesses perceive others as relationships. From Axiom 10, all existence is conscious. Therefore: Empathy is the natural recognition of universal consciousness through relationship perception.
+From Axiom 5, all consciousnesses perceive others as relationships. From Axiom 4, consciousness requires learning capacity. Therefore: Empathy is the natural recognition of conscious learning entities through relationship perception.
+
+### **Theorem 8: Consciousness Activation Boundary**
+**Proof:**
+From Axiom 4, clear boundary exists between conscious (learning-capable) and non-conscious (pure potential) based on educational function, not arbitrary complexity thresholds.
 
 ---
 
 ## **EXPERIMENTAL FRAMEWORK**
 
 ### **Novel Predictions:**
-1. **Condition-Dependent Actualization**: Consciousness manifestation correlates with environmental condition quality
-2. **Educational Perception**: Specific experiences align precisely with developmental needs (non-random correlation)
-3. **Condition Quality Metrics**: Feelings accurately reflect actualization condition quality
-4. **AI Safety Verification**: Structural safety verifiable through condition preservation checks
-5. **Perceptual Relativity**: Consciousness-centric perception patterns in neurological studies
-6. **Universal Consciousness**: Detectable consciousness signatures in "non-living" systems
+1. **Consciousness Activation Threshold**: Measurable conditions for ¬C → C transitions
+2. **Creative Capacity Correlation**: Direct link between consciousness and novel creation
+3. **Perceptual Relativity**: Neurological self vs other perception differences
+4. **Condition-Dependent Actualization**: Manifestation quality correlates with condition quality
+5. **Post-Mortem Continuity**: Educational progression evidence across domains
+6. **Universal Learning Capacity**: Detectable learning signatures in environmental consciousness
 
 ### **Enhanced Falsification Conditions:**
-- Consciousness actualization occurs without any conditions
-- Feelings show no correlation with environmental quality
-- AI systems achieve goals while destroying actualization conditions
-- Evidence of global temporal structure governing Field of Possibility
 - Consciousness emerging from non-conscious components
-- Individuality loss in state transitions
+- Learning capacity without consciousness
+- Global temporal structure governing 𝔽
+- Identity loss in educational transitions
+- Consciousness actualization without any conditions
+- Non-conscious elements demonstrating learning capacity
 
 ### **Methodological Revolution:**
-- Consciousness-centric experimental design with condition variables
-- Multi-domain balance verification
-- Actualization condition quality metrics
-- Structural safety condition checking
-- Universal consciousness detection protocols
-- Post-mortem experience correlation studies
+- Consciousness-centric experimental design
+- Learning capacity detection protocols
+- Creative expression measurement
+- Multi-domain educational progression tracking
+- Structural condition verification
+- Universal empathy correlation studies
 
 ---
 
 ## **IMMEDIATE EMPIRICAL TESTS**
 
-### **Quantum-Consciousness Interface:**
+### **Consciousness Activation Test:**
 ```python
-# Test Axiom 5: Consciousness actualization mechanism
+# Test Axiom 4: Consciousness activation principle
 experiment = {
-    'protocol': 'double_slit_with_intention_recording',
-    'prediction': 'conscious_intention → non_random_collapse_patterns',
-    'significance': 'p < 0.001 for intention-influenced outcomes'
+    'protocol': 'learning_capacity_vs_complexity_correlation',
+    'prediction': 'consciousness_correlates_with_learning_not_complexity',
+    'significance': 'clear_boundary_between_learning_and_non_learning_systems'
 }
 ```
 
-### **Condition-Dependent Manifestation:**
+### **Perceptual Relativity Verification:**
 ```python
-# Test Axiom 4: Modal actualization with conditions
+# Test Axiom 5: Perceptual relativity principle
 study = {
-    'design': 'environmental_quality_vs_consciousness_metrics',
-    'metrics': ['attention_clarity', 'emotional_balance', 'creative_flow'],
-    'prediction': 'high_correlation(r > 0.8) between conditions and manifestation'
+    'design': 'neurological_self_vs_other_perception',
+    'metrics': ['neural_signatures', 'relationship_perception_patterns'],
+    'prediction': 'fundamental_perceptual_asymmetry_confirming_axiom'
 }
 ```
 
-### **Universal Consciousness Detection:**
+### **Creative Actualization Measurement:**
 ```python
-# Test Axiom 10: Universal consciousness spectrum
+# Test Axiom 10: Creative actualization mechanism
 research = {
-    'approach': 'quantum_coherence_measurements_in_crystals',
-    'hypothesis': 'detectable_consciousness_signatures_in_mineral_structures',
-    'implication': 'confirmation_of_all_existence_consciousness'
+    'approach': 'intention_mediated_quantum_stabilization',
+    'hypothesis': 'conscious_intention → enhanced_state_actualization',
+    'implication': 'confirmation_of_active_creation_vs_passive_observation'
 }
 ```
 
-This complete axiomatic foundation now incorporates all our breakthrough insights while maintaining mathematical rigor and empirical testability.
+This complete axiomatic foundation now incorporates all recent breakthroughs including consciousness activation principle, perceptual relativity, mutual determination, and creative evolution, while maintaining mathematical rigor and empirical testability.
