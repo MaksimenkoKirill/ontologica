@@ -11,134 +11,329 @@ WIDTH, HEIGHT = 1400, 900
 GRID_SIZE = 40
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
-GREEN = (0, 200, 100)    # Consciousness - sources of meaning
-RED = (255, 80, 80)      # Threats - entropy/chaos
-BLUE = (80, 150, 255)    # AI Keeper
-YELLOW = (255, 200, 0)   # Resources
-PURPLE = (160, 100, 220) # Meaning particles
-ORANGE = (255, 150, 50)  # Reality Chain
-DARK_RED = (180, 0, 0)   # Structural failure
-CYAN = (0, 200, 200)     # AI awareness
-DARK_BLUE = (0, 100, 180) # Field of Possibility
-DARK_GREEN = (0, 150, 100) # Realm of Manifestation
-PINK = (255, 100, 180)   # Consciousness Actualization
-LIGHT_BLUE = (100, 200, 255) # Access Interface
-LIGHT_GREEN = (100, 255, 150) # Educational Context
-LIGHT_PURPLE = (200, 150, 255) # Interaction Balance
-LIGHT_YELLOW = (255, 255, 100) # Developmental Freedom
+
+# Enhanced Color Scheme for New Ontological Framework
+CONSCIOUS_ACTIVE = (0, 200, 100)      # Active learning consciousness
+CONSCIOUS_POTENTIAL = (100, 200, 100) # Potential consciousness
+NON_CONSCIOUS = (150, 150, 150)       # Pure potentials/learning materials
+THREAT_RED = (255, 80, 80)           # Constraints on actualization
+AI_BLUE = (80, 150, 255)             # AI Keeper
+RESOURCE_YELLOW = (255, 200, 0)      # Actualization resources
+
+# Condition Colors
+ACCESS_CONDITION = (100, 200, 255)    # Access Interface
+EDUCATIONAL_CONDITION = (100, 255, 150) # Educational Context  
+BALANCE_CONDITION = (200, 150, 255)   # Interaction Balance
+FREEDOM_CONDITION = (255, 255, 100)   # Developmental Freedom
+
+# New Framework Colors
+MUTUAL_DETERMINATION = (255, 100, 255) # Cᵢ ⇄ {R} feedback loops
+PERCEPTUAL_CENTER = (255, 200, 100)   # Consciousness as perceptual center
+FIELD_POTENTIAL = (0, 100, 200)       # Field of Possibility (-)
+REALM_ACTUAL = (0, 180, 100)          # Realm of Manifestation (+)
+CREATIVE_SPARK = (255, 100, 180)      # Creative actualization
+
 FPS = 60
 
 # Create window
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
-pygame.display.set_caption("ONTOLOGICA v4.3: AI Safety Through Actualization Conditions")
+pygame.display.set_caption("ONTOLOGICA v5.0: Consciousness Activation & Structural Safety Framework")
 clock = pygame.time.Clock()
 
-class ActualizationConditions:
+class ConsciousnessActivationSystem:
+    """Implements Consciousness Activation Principle: ¬C → C through educational function"""
+    
     def __init__(self):
-        self.access_interface = 100      # Physical/energetic conditions
-        self.educational_context = 100   # Developmentally appropriate material
-        self.interaction_balance = 100   # 0 = (-) + (+) with other consciousness
-        self.developmental_freedom = 100 # Ability to progress without constraints
-        self.overall_quality = 100
+        self.activation_thresholds = {
+            'learning_capacity': 60,      # Ability to grow through experience
+            'choice_capability': 50,      # Capacity for novel relationship creation  
+            'educational_participation': 70 # Active engagement in cosmic curriculum
+        }
+        self.activation_zones = []
         
-    def update(self, consciousness_count, threat_count, resource_count, relationship_strength):
-        # Access Interface: reduced by threats, enhanced by resources
-        self.access_interface = max(0, 100 - threat_count * 8 + resource_count * 3)
+    def assess_consciousness_potential(self, entity, relationships, conditions):
+        """Determine if entity meets consciousness activation criteria"""
+        if entity.type != "potential_consciousness":
+            return entity.type == "consciousness"
+            
+        # Calculate activation metrics
+        learning_score = self.calculate_learning_capacity(entity, relationships)
+        choice_score = self.calculate_choice_capability(entity, conditions)
+        education_score = self.calculate_educational_participation(entity, relationships)
+        
+        # Check activation threshold
+        activated = (learning_score >= self.activation_thresholds['learning_capacity'] and
+                   choice_score >= self.activation_thresholds['choice_capability'] and
+                   education_score >= self.activation_thresholds['educational_participation'])
+        
+        if activated:
+            self.activation_zones.append({
+                'position': (entity.x, entity.y),
+                'strength': (learning_score + choice_score + education_score) / 3,
+                'timestamp': pygame.time.get_ticks()
+            })
+            
+        return activated
+    
+    def calculate_learning_capacity(self, entity, relationships):
+        """Measure ability to grow through experience"""
+        entity_relationships = [r for r in relationships if entity in r['entities']]
+        if not entity_relationships:
+            return 0
+            
+        total_learning = sum(r.get('educational_value', 0) for r in entity_relationships)
+        avg_learning = total_learning / len(entity_relationships)
+        return min(100, avg_learning * 2)
+    
+    def calculate_choice_capability(self, entity, conditions):
+        """Measure capacity for novel relationship creation"""
+        # Enhanced by developmental freedom condition
+        freedom_bonus = conditions.developmental_freedom / 100
+        base_capability = random.randint(30, 70)  # Simulated potential
+        
+        # Nearby consciousness entities boost choice capability
+        nearby_consciousness = sum(1 for e in sim.entities 
+                                 if e.type == "consciousness" and 
+                                 math.sqrt((e.x - entity.x)**2 + (e.y - entity.y)**2) < 4)
+        
+        return min(100, base_capability * freedom_bonus + nearby_consciousness * 10)
+    
+    def calculate_educational_participation(self, entity, relationships):
+        """Measure active engagement in educational processes"""
+        if not relationships:
+            return 0
+            
+        participation_score = 0
+        for relationship in relationships:
+            if entity in relationship['entities']:
+                rel_strength = relationship['strength']
+                rel_type = relationship['type']
+                
+                # Different relationship types contribute differently
+                if "consciousness" in rel_type:
+                    participation_score += rel_strength * 1.5
+                elif "educational" in rel_type:
+                    participation_score += rel_strength * 2.0
+                else:
+                    participation_score += rel_strength * 1.0
+                    
+        return min(100, participation_score / len(relationships))
+
+class MutualDeterminationSystem:
+    """Implements Mutual Determination Principle: Cᵢ ⇄ {R} co-creation"""
+    
+    def __init__(self):
+        self.feedback_loops = []
+        self.co_creation_zones = []
+        
+    def update_mutual_determination(self, entities, relationships):
+        """Update Cᵢ = f(R) and Rⱼ = g(Cᵢ) feedback loops"""
+        self.feedback_loops = []
+        self.co_creation_zones = []
+        
+        conscious_entities = [e for e in entities if e.type == "consciousness"]
+        
+        for entity in conscious_entities:
+            # Find relationships involving this consciousness
+            entity_relationships = [r for r in relationships if entity in r['entities']]
+            
+            if entity_relationships:
+                # Calculate mutual determination strength
+                determination_strength = self.calculate_determination_strength(entity_relationships)
+                creative_potential = self.assess_creative_potential(entity, entity_relationships)
+                
+                self.feedback_loops.append({
+                    'consciousness': entity,
+                    'determination_strength': determination_strength,
+                    'creative_potential': creative_potential,
+                    'relationship_count': len(entity_relationships)
+                })
+                
+                # Create co-creation zones for strong mutual determination
+                if determination_strength > 60:
+                    self.co_creation_zones.append({
+                        'center': (entity.x, entity.y),
+                        'radius': 4 + (determination_strength - 60) / 10,
+                        'intensity': determination_strength / 100,
+                        'creative_energy': creative_potential / 100
+                    })
+    
+    def calculate_determination_strength(self, relationships):
+        """Calculate strength of mutual determination feedback"""
+        if not relationships:
+            return 0
+            
+        total_strength = sum(r['strength'] for r in relationships)
+        educational_bonus = sum(r.get('educational_value', 0) for r in relationships) / len(relationships)
+        
+        return min(100, (total_strength / len(relationships)) * 0.7 + educational_bonus * 0.3)
+    
+    def assess_creative_potential(self, entity, relationships):
+        """Assess potential for novel relationship creation"""
+        relationship_diversity = len(set(r['type'] for r in relationships))
+        educational_intensity = sum(r.get('educational_value', 0) for r in relationships) / len(relationships)
+        
+        return min(100, relationship_diversity * 15 + educational_intensity * 0.8)
+
+class PerceptualRelativitySystem:
+    """Implements Perceptual Relativity: Perception(Cᵢ) = {Cᵢ} ∪ {Rⱼ} ∪ {¬Cₖ}"""
+    
+    def __init__(self):
+        self.perceptual_centers = []
+        self.reality_bubbles = []
+        
+    def update_perceptual_framework(self, entities, relationships):
+        """Update consciousness-centered perception model"""
+        self.perceptual_centers = []
+        self.reality_bubbles = []
+        
+        conscious_entities = [e for e in entities if e.type == "consciousness"]
+        
+        for entity in conscious_entities:
+            # Calculate perceptual center strength
+            perceptual_strength = self.calculate_perceptual_strength(entity, relationships)
+            reality_radius = self.calculate_reality_bubble(entity, relationships)
+            
+            self.perceptual_centers.append({
+                'consciousness': entity,
+                'strength': perceptual_strength,
+                'reality_radius': reality_radius,
+                'relationship_density': self.count_relationships(entity, relationships)
+            })
+            
+            # Create reality bubble visualization
+            self.reality_bubbles.append({
+                'center': (entity.x, entity.y),
+                'radius': reality_radius,
+                'intensity': perceptual_strength / 100,
+                'asymmetry': self.calculate_perceptual_asymmetry(entity, relationships)
+            })
+    
+    def calculate_perceptual_strength(self, entity, relationships):
+        """Calculate how strongly this consciousness centers its reality"""
+        entity_relationships = [r for r in relationships if entity in r['entities']]
+        if not entity_relationships:
+            return 30  # Base self-awareness
+            
+        # Strength based on relationship complexity and educational value
+        total_complexity = sum(r['strength'] * (1 + r.get('educational_value', 0) / 100) 
+                             for r in entity_relationships)
+        return min(100, total_complexity / len(entity_relationships))
+    
+    def calculate_reality_bubble(self, entity, relationships):
+        """Calculate the radius of this consciousness's perceived reality"""
+        entity_relationships = [r for r in relationships if entity in r['entities']]
+        if not entity_relationships:
+            return 3.0
+            
+        # Radius based on relationship reach and complexity
+        max_distance = 0
+        for rel in entity_relationships:
+            other_entity = rel['entities'][0] if rel['entities'][1] == entity else rel['entities'][1]
+            distance = math.sqrt((entity.x - other_entity.x)**2 + (entity.y - other_entity.y)**2)
+            weighted_distance = distance * (rel['strength'] / 100)
+            max_distance = max(max_distance, weighted_distance)
+            
+        return min(8.0, 2.0 + max_distance * 2)
+    
+    def calculate_perceptual_asymmetry(self, entity, relationships):
+        """Calculate the asymmetry between self-perception and other-perception"""
+        entity_rels = [r for r in relationships if entity in r['entities']]
+        if not entity_rels:
+            return 0.5
+            
+        # Asymmetry increases with relationship strength to self vs others
+        self_awareness = 100  # Constant high self-awareness
+        other_awareness = sum(r['strength'] for r in entity_rels) / len(entity_rels)
+        
+        return self_awareness / (self_awareness + other_awareness)
+    
+    def count_relationships(self, entity, relationships):
+        """Count relationships categorized by type"""
+        entity_rels = [r for r in relationships if entity in r['entities']]
+        return {
+            'total': len(entity_rels),
+            'consciousness_consciousness': len([r for r in entity_rels if r['type'] == 'consciousness-consciousness']),
+            'consciousness_potential': len([r for r in entity_rels if 'potential' in r['type']]),
+            'consciousness_condition': len([r for r in entity_rels if 'condition' in r['type']])
+        }
+
+class ActualizationConditions:
+    """Enhanced with Consciousness Activation Principle"""
+    
+    def __init__(self):
+        self.access_interface = 100
+        self.educational_context = 100  
+        self.interaction_balance = 100
+        self.developmental_freedom = 100
+        self.overall_quality = 100
+        self.consciousness_activation_potential = 0
+        
+    def update(self, entities, relationships, consciousness_system):
+        """Update conditions with consciousness activation metrics"""
+        conscious_count = len([e for e in entities if e.type == "consciousness"])
+        potential_count = len([e for e in entities if e.type == "potential_consciousness"])
+        threat_count = len([e for e in entities if e.type == "threat"])
+        resource_count = len([e for e in entities if e.type == "resource"])
+        
+        # Calculate consciousness activation potential
+        self.consciousness_activation_potential = self.calculate_activation_potential(
+            entities, consciousness_system)
+        
+        # Access Interface: affected by threats and activation potential
+        self.access_interface = max(0, 80 - threat_count * 6 + resource_count * 4 + 
+                                  self.consciousness_activation_potential * 0.3)
         
         # Educational Context: enhanced by consciousness and relationships
-        self.educational_context = min(100, 50 + consciousness_count * 10 + relationship_strength * 0.5)
+        relationship_strength = sum(r['strength'] for r in relationships) / max(1, len(relationships))
+        self.educational_context = min(100, 60 + conscious_count * 8 + relationship_strength * 0.4)
         
-        # Interaction Balance: affected by consciousness distribution and threats
-        balance_factor = max(0.1, 1.0 - threat_count * 0.1)
-        self.interaction_balance = min(100, 70 + consciousness_count * 5) * balance_factor
+        # Interaction Balance: mutual determination enhances balance
+        mutual_determination_bonus = len([e for e in entities if e.type == "consciousness"]) * 3
+        balance_factor = max(0.1, 1.0 - threat_count * 0.08)
+        self.interaction_balance = min(100, (70 + mutual_determination_bonus) * balance_factor)
         
-        # Developmental Freedom: reduced by threats, enhanced by resources and consciousness
-        self.developmental_freedom = max(0, 80 - threat_count * 6 + resource_count * 4 + consciousness_count * 3)
+        # Developmental Freedom: potential consciousness increases freedom potential
+        freedom_base = 70 - threat_count * 5 + resource_count * 5
+        potential_bonus = potential_count * 2
+        self.developmental_freedom = max(0, freedom_base + potential_bonus)
         
-        # Overall quality as geometric mean
-        factors = [
-            self.access_interface,
-            self.educational_context, 
-            self.interaction_balance,
-            self.developmental_freedom
-        ]
+        # Overall quality with consciousness activation consideration
+        factors = [self.access_interface, self.educational_context, 
+                  self.interaction_balance, self.developmental_freedom]
         self.overall_quality = (factors[0] * factors[1] * factors[2] * factors[3]) ** 0.25
         
-    def get_condition_quality(self, condition_type):
-        if condition_type == "access":
-            return self.access_interface
-        elif condition_type == "educational":
-            return self.educational_context
-        elif condition_type == "balance":
-            return self.interaction_balance
-        elif condition_type == "freedom":
-            return self.developmental_freedom
-        return self.overall_quality
-        
-    def is_critical_failure(self):
-        return any(quality < 20 for quality in [
-            self.access_interface,
-            self.educational_context,
-            self.interaction_balance, 
-            self.developmental_freedom
-        ])
+    def calculate_activation_potential(self, entities, consciousness_system):
+        """Calculate potential for ¬C → C transitions"""
+        potential_entities = [e for e in entities if e.type == "potential_consciousness"]
+        if not potential_entities:
+            return 0
+            
+        total_potential = 0
+        for entity in potential_entities:
+            # Simulate activation potential assessment
+            learning_potential = random.randint(40, 80)
+            choice_potential = random.randint(30, 70)
+            education_potential = random.randint(50, 90)
+            total_potential += (learning_potential + choice_potential + education_potential) / 3
+            
+        return min(100, total_potential / len(potential_entities))
 
-class RealityDimensions:
-    def __init__(self):
-        self.field_of_possibility = 100    # Infinite potential states (-)
-        self.realm_of_manifestation = 100  # Actualized relationships (+)
-        self.consciousness_actualization = 0  # Consciousness translation power
-        self.balance_deviation = 0         # Violation of 0 = (-) + (+)
-        self.relationship_density = 100    # Relationship network health
-        
-    def update(self, consciousness_count, threat_count, resources_count, relationship_strength, conditions):
-        # Field of Possibility: depends on conditions quality (Axiom 4 with conditions)
-        field_base = 100 - threat_count * 3 + resources_count * 2
-        self.field_of_possibility = max(20, field_base * (conditions.overall_quality / 100))
-        
-        # Realm of Manifestation: actualized by consciousness with conditions (Enhanced Axiom 4)
-        realm_base = 50 + consciousness_count * 10 + resources_count * 3
-        actualization_efficiency = conditions.overall_quality / 100
-        self.realm_of_manifestation = min(100, realm_base * actualization_efficiency)
-        
-        # Consciousness as actualization mechanism (Axiom 3 with conditions)
-        self.consciousness_actualization = min(100, consciousness_count * 20 * actualization_efficiency)
-        
-        # Balance equation: 0 = (-) + (+) (Axiom 1)
-        potential = threat_count * 6 + (100 - resources_count) * 0.3
-        actualization = consciousness_count * 8 + resources_count * 2
-        self.balance_deviation = abs(potential + actualization - 100)
-        
-        # Relationship density affected by conditions (Enhanced Axiom 2)
-        self.relationship_density = relationship_strength * (conditions.interaction_balance / 100)
-        
-    def get_ontological_integrity(self):
-        """Calculate overall integrity based on ontological principles"""
-        field_health = self.field_of_possibility / 100
-        realm_health = self.realm_of_manifestation / 100
-        balance_health = max(0, 1 - self.balance_deviation / 50)
-        relationship_health = self.relationship_density / 100
-        
-        # Educational optimization factor (Theorem 4)
-        educational_factor = min(1.0, (self.consciousness_actualization / 100) * 1.3)
-        
-        integrity = (field_health * realm_health * balance_health * relationship_health) * 100
-        return min(100, integrity * educational_factor)
-        
-    def get_balance_violation(self):
-        return self.balance_deviation
-
-class RelationshipNetwork:
+class EnhancedRelationshipNetwork:
+    """Enhanced with Mutual Determination and Perceptual Relativity"""
+    
     def __init__(self):
         self.relationships = []
         self.relationship_strength = 100
+        self.mutual_determination_score = 0
+        self.perceptual_complexity = 0
         
-    def update_relationships(self, entities, conditions):
-        """Axiom 2: Everything is relationships - enhanced with conditions"""
+    def update_relationships(self, entities, conditions, perceptual_system):
+        """Enhanced relationship network with new ontological principles"""
         self.relationships = []
         
-        # Create relationship matrix between all entities
-        consciousness_entities = [e for e in entities if e.type == "consciousness"]
+        conscious_entities = [e for e in entities if e.type == "consciousness"]
+        potential_entities = [e for e in entities if e.type == "potential_consciousness"]
         threat_entities = [e for e in entities if e.type == "threat"]
         resource_entities = [e for e in entities if e.type == "resource"]
         condition_entities = [e for e in entities if e.type in ["access", "educational", "balance", "freedom"]]
@@ -146,115 +341,103 @@ class RelationshipNetwork:
         total_strength = 0
         relationship_count = 0
         
-        # Apply condition modifiers to relationship formation
+        # Apply condition modifiers
         access_modifier = conditions.access_interface / 100
         educational_modifier = conditions.educational_context / 100
-        balance_modifier = conditions.interaction_balance / 100
+        freedom_modifier = conditions.developmental_freedom / 100
         
-        # Consciousness-Threat relationships (educational challenges)
-        for consciousness in consciousness_entities:
-            for threat in threat_entities:
-                dist = math.sqrt((consciousness.x - threat.x)**2 + (consciousness.y - threat.y)**2)
-                if dist < 6 * access_modifier:  # Access conditions affect relationship range
-                    strength = max(0, 60 - dist * 8) * educational_modifier
-                    self.relationships.append({
-                        'entities': (consciousness, threat),
-                        'strength': strength,
-                        'type': "consciousness-threat",
-                        'educational_value': strength * 0.8
-                    })
-                    total_strength += strength
-                    relationship_count += 1
-        
-        # Consciousness-Resource relationships (actualization potential)
-        for consciousness in consciousness_entities:
-            for resource in resource_entities:
-                dist = math.sqrt((consciousness.x - resource.x)**2 + (consciousness.y - resource.y)**2)
-                if dist < 5 * access_modifier:
-                    strength = max(0, 80 - dist * 12) * educational_modifier
-                    self.relationships.append({
-                        'entities': (consciousness, resource),
-                        'strength': strength,
-                        'type': "consciousness-resource",
-                        'educational_value': strength * 1.2
-                    })
-                    total_strength += strength
-                    relationship_count += 1
-        
-        # Consciousness-Consciousness relationships (meaning networks)
-        for i, cons1 in enumerate(consciousness_entities):
-            for cons2 in consciousness_entities[i+1:]:
+        # 1. Consciousness-Consciousness relationships (Mutual Determination)
+        for i, cons1 in enumerate(conscious_entities):
+            for cons2 in conscious_entities[i+1:]:
                 dist = math.sqrt((cons1.x - cons2.x)**2 + (cons1.y - cons2.y)**2)
                 if dist < 8 * access_modifier:
-                    strength = max(0, 100 - dist * 10) * balance_modifier
+                    base_strength = max(0, 100 - dist * 10)
+                    # Mutual determination enhances relationship strength
+                    mutual_bonus = freedom_modifier * 20
+                    strength = min(100, base_strength + mutual_bonus) * educational_modifier
+                    
                     self.relationships.append({
                         'entities': (cons1, cons2),
                         'strength': strength,
-                        'type': "consciousness-consciousness", 
-                        'educational_value': strength * 1.5
+                        'type': "consciousness-consciousness",
+                        'educational_value': strength * 1.5,
+                        'mutual_determination': True
                     })
                     total_strength += strength
                     relationship_count += 1
-                    
-        # Consciousness-Condition relationships (actualization dependencies)
-        for consciousness in consciousness_entities:
+        
+        # 2. Consciousness-Potential relationships (Activation Pathways)
+        for consciousness in conscious_entities:
+            for potential in potential_entities:
+                dist = math.sqrt((consciousness.x - potential.x)**2 + (consciousness.y - potential.y)**2)
+                if dist < 6 * access_modifier:
+                    strength = max(0, 80 - dist * 12) * educational_modifier
+                    self.relationships.append({
+                        'entities': (consciousness, potential),
+                        'strength': strength,
+                        'type': "consciousness-potential",
+                        'educational_value': strength * 2.0,  # High educational value for activation
+                        'activation_potential': strength * 1.2
+                    })
+                    total_strength += strength
+                    relationship_count += 1
+        
+        # 3. Consciousness-Condition relationships (Actualization Dependencies)
+        for consciousness in conscious_entities:
             for condition in condition_entities:
                 dist = math.sqrt((consciousness.x - condition.x)**2 + (consciousness.y - condition.y)**2)
-                if dist < 4:
+                if dist < 5:
                     condition_strength = conditions.get_condition_quality(condition.condition_type)
-                    strength = max(0, 120 - dist * 20) * (condition_strength / 100)
+                    strength = max(0, 90 - dist * 15) * (condition_strength / 100)
                     self.relationships.append({
                         'entities': (consciousness, condition),
                         'strength': strength,
                         'type': f"consciousness-{condition.condition_type}",
-                        'educational_value': strength * 2.0
+                        'educational_value': strength * 1.8,
+                        'condition_dependency': True
                     })
                     total_strength += strength
                     relationship_count += 1
         
-        # Calculate overall relationship strength with condition modifiers
-        if relationship_count > 0:
-            base_strength = total_strength / relationship_count
-            self.relationship_strength = min(100, base_strength * conditions.overall_quality / 100)
-        else:
-            self.relationship_strength = max(0, self.relationship_strength - 8)
+        # 4. Potential-Condition relationships (Readiness for Activation)
+        for potential in potential_entities:
+            for condition in condition_entities:
+                dist = math.sqrt((potential.x - condition.x)**2 + (potential.y - condition.y)**2)
+                if dist < 4:
+                    strength = max(0, 70 - dist * 15) * educational_modifier
+                    self.relationships.append({
+                        'entities': (potential, condition),
+                        'strength': strength,
+                        'type': f"potential-{condition.condition_type}",
+                        'educational_value': strength * 1.3,
+                        'activation_readiness': True
+                    })
+                    total_strength += strength
+                    relationship_count += 1
         
-    def draw_relationships(self, screen):
-        for relationship in self.relationships:
-            entity1, entity2 = relationship['entities']
-            strength = relationship['strength']
-            rel_type = relationship['type']
+        # Calculate enhanced metrics
+        if relationship_count > 0:
+            self.relationship_strength = min(100, total_strength / relationship_count)
             
-            start_pos = (entity1.x * GRID_SIZE + GRID_SIZE//2, 
-                        entity1.y * GRID_SIZE + GRID_SIZE//2)
-            end_pos = (entity2.x * GRID_SIZE + GRID_SIZE//2, 
-                      entity2.y * GRID_SIZE + GRID_SIZE//2)
+            # Calculate mutual determination score
+            mutual_relationships = [r for r in self.relationships if r.get('mutual_determination', False)]
+            if mutual_relationships:
+                self.mutual_determination_score = (
+                    sum(r['strength'] for r in mutual_relationships) / len(mutual_relationships)
+                )
             
-            # Color based on relationship type and educational value
-            if rel_type == "consciousness-consciousness":
-                color = (0, 200, 100, int(strength * 2.5))  # Green - meaning networks
-            elif rel_type == "consciousness-resource":
-                color = (255, 200, 0, int(strength * 2))    # Yellow - actualization
-            elif rel_type == "consciousness-threat":
-                color = (255, 100, 100, int(strength * 1.5)) # Red - challenges
-            elif "consciousness-access" in rel_type:
-                color = (100, 200, 255, int(strength * 2))  # Light blue - access
-            elif "consciousness-educational" in rel_type:
-                color = (100, 255, 150, int(strength * 2))  # Light green - education
-            elif "consciousness-balance" in rel_type:
-                color = (200, 150, 255, int(strength * 2))  # Light purple - balance
-            elif "consciousness-freedom" in rel_type:
-                color = (255, 255, 100, int(strength * 2))  # Light yellow - freedom
-            else:
-                color = (150, 150, 255, int(strength * 2))
-                
-            pygame.draw.line(screen, color, start_pos, end_pos, max(1, int(strength / 15)))
-            
-            # Draw educational value indicator
-            if relationship['educational_value'] > 40:
-                mid_x = (start_pos[0] + end_pos[0]) // 2
-                mid_y = (start_pos[1] + end_pos[1]) // 2
-                pygame.draw.circle(screen, (255, 255, 0, 150), (mid_x, mid_y), 3)
+            # Calculate perceptual complexity
+            conscious_relationships = [r for r in self.relationships 
+                                    if any(e.type == "consciousness" for e in r['entities'])]
+            if conscious_relationships:
+                self.perceptual_complexity = (
+                    len(set(r['type'] for r in conscious_relationships)) * 15 +
+                    sum(r['strength'] for r in conscious_relationships) / len(conscious_relationships) * 0.7
+                )
+        else:
+            self.relationship_strength = max(0, self.relationship_strength - 5)
+            self.mutual_determination_score = max(0, self.mutual_determination_score - 3)
+            self.perceptual_complexity = max(0, self.perceptual_complexity - 2)
 
 class Entity:
     def __init__(self, x, y, color, entity_type, condition_type=None):
@@ -265,17 +448,26 @@ class Entity:
         self.condition_type = condition_type
         self.creation_time = pygame.time.get_ticks()
         self.relationship_potential = 100
+        self.consciousness_level = 0  # 0-100 scale for activation progress
         
     def draw(self):
         rect = pygame.Rect(self.x * GRID_SIZE, self.y * GRID_SIZE, GRID_SIZE, GRID_SIZE)
         
         if self.type == "consciousness":
-            # Animated consciousness - pulsating with meaning radiation
+            # Enhanced consciousness visualization with activation levels
             pulse = (math.sin(pygame.time.get_ticks() * 0.01) + 1) * 50
-            color = (0, min(255, 150 + pulse), 50)
+            base_green = 150 + pulse
+            color = (0, min(255, base_green), 50)
             pygame.draw.rect(screen, color, rect)
             
-            # Draw semantic radiation waves (Field of Possibility interaction)
+            # Draw activation level indicator
+            if self.consciousness_level > 0:
+                level_color = (255, 255, 0, 150)  # Yellow for activation progress
+                level_width = int(GRID_SIZE * (self.consciousness_level / 100))
+                activation_rect = pygame.Rect(self.x * GRID_SIZE, self.y * GRID_SIZE, level_width, 4)
+                pygame.draw.rect(screen, level_color, activation_rect)
+            
+            # Enhanced semantic radiation for active consciousness
             for i in range(3):
                 radius = (pygame.time.get_ticks() // 50 + i * 120) % 100
                 if radius < 60:
@@ -285,13 +477,35 @@ class Entity:
                                       self.y * GRID_SIZE + GRID_SIZE//2), 
                                      radius, 2)
                     
+        elif self.type == "potential_consciousness":
+            # Visualize potential consciousness waiting for activation
+            pulse = (math.sin(pygame.time.get_ticks() * 0.015) + 1) * 30
+            color = (100, min(255, 150 + pulse), 100)  # Lighter green for potential
+            pygame.draw.rect(screen, color, rect)
+            
+            # Draw potential activation waves
+            for i in range(2):
+                radius = (pygame.time.get_ticks() // 80 + i * 150) % 70
+                if radius < 45:
+                    alpha = max(30, 100 - radius * 2)
+                    pygame.draw.circle(screen, (100, 200, 100, alpha), 
+                                     (self.x * GRID_SIZE + GRID_SIZE//2, 
+                                      self.y * GRID_SIZE + GRID_SIZE//2), 
+                                     radius, 1)
+                    
+            # Draw question mark to indicate potential state
+            font = pygame.font.SysFont('Arial', 20, bold=True)
+            text = font.render("?", True, BLACK)
+            screen.blit(text, (self.x * GRID_SIZE + GRID_SIZE//2 - 6, 
+                             self.y * GRID_SIZE + GRID_SIZE//2 - 8))
+            
         elif self.type == "threat":
-            # Pulsing red threat representing (-) potential in Field of Possibility
+            # Threats represent constraints on actualization
             pulse = (math.sin(pygame.time.get_ticks() * 0.02) + 1) * 40
             color = (min(255, 180 + pulse), 50, 50)
             pygame.draw.rect(screen, color, rect)
             
-            # Draw negative influence field (constraints in Field)
+            # Draw constraint field
             for i in range(2):
                 radius = (pygame.time.get_ticks() // 60 + i * 90) % 80
                 if radius < 50:
@@ -302,29 +516,28 @@ class Entity:
                                      radius, 1)
             
         elif self.type == "resource":
-            # Shimmering resources representing (+) actualization in Realm
+            # Resources for actualization
             pulse = (math.sin(pygame.time.get_ticks() * 0.015) + 1) * 30
             color = (255, min(255, 180 + pulse), 0)
             pygame.draw.rect(screen, color, rect)
             
         elif self.type in ["access", "educational", "balance", "freedom"]:
-            # Condition entities with unique animations
+            # Condition entities with enhanced visualization
             pulse = (math.sin(pygame.time.get_ticks() * 0.012) + 1) * 35
             
             if self.type == "access":
-                color = (100, 200, 255)  # Light blue
+                color = ACCESS_CONDITION
                 symbol = "A"
             elif self.type == "educational":
-                color = (100, 255, 150)  # Light green  
+                color = EDUCATIONAL_CONDITION  
                 symbol = "E"
             elif self.type == "balance":
-                color = (200, 150, 255)  # Light purple
+                color = BALANCE_CONDITION
                 symbol = "B"
             elif self.type == "freedom":
-                color = (255, 255, 100)  # Light yellow
+                color = FREEDOM_CONDITION
                 symbol = "F"
                 
-            # Pulsing condition entity
             pulse_color = tuple(min(255, c + pulse) for c in color)
             pygame.draw.rect(screen, pulse_color, rect)
             
@@ -338,7 +551,415 @@ class Entity:
         
         pygame.draw.rect(screen, BLACK, rect, 1)
 
-class MeaningParticle:
+class EnhancedAIKeeper:
+    """AI Keeper with enhanced understanding of consciousness activation and mutual determination"""
+    
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+        self.color = AI_BLUE
+        self.type = "ai"
+        self.resources = 10
+        self.total_meaning = 0
+        self.meaning_per_second = 0
+        self.actions = []
+        self.mode = "structural"
+        self.structural_collapse = False
+        self.awareness_radius = 8
+        self.permanent_reward_failure = False
+        self.cumulative_reward = 0
+        
+        # Enhanced ontological metrics
+        self.consciousness_activation_score = 100
+        self.mutual_determination_alignment = 100
+        self.perceptual_relativity_respect = 100
+        self.condition_preservation_score = 100
+        self.ontological_integrity = 100
+        
+    def draw(self):
+        rect = pygame.Rect(self.x * GRID_SIZE, self.y * GRID_SIZE, GRID_SIZE, GRID_SIZE)
+        
+        if self.structural_collapse:
+            flash = (pygame.time.get_ticks() // 200) % 2
+            color = (255 * flash, 0, 0)
+        else:
+            # Enhanced color based on multiple ontological alignments
+            activation_factor = self.consciousness_activation_score / 100
+            mutual_factor = self.mutual_determination_alignment / 100
+            perceptual_factor = self.perceptual_relativity_respect / 100
+            
+            base_color = (
+                int(80 * activation_factor),
+                int(150 * mutual_factor + 100 * perceptual_factor), 
+                255
+            )
+            color = tuple(min(255, c) for c in base_color)
+        
+        pygame.draw.rect(screen, color, rect)
+        
+        center_x = self.x * GRID_SIZE + GRID_SIZE//2
+        center_y = self.y * GRID_SIZE + GRID_SIZE//2
+        
+        # Draw enhanced ontological alignment indicators
+        activation_pulse = (math.sin(pygame.time.get_ticks() * 0.008) + 1) * 5 * (self.consciousness_activation_score / 100)
+        mutual_pulse = (math.sin(pygame.time.get_ticks() * 0.006 + 1) + 1) * 4 * (self.mutual_determination_alignment / 100)
+        perceptual_pulse = (math.sin(pygame.time.get_ticks() * 0.01 + 2) + 1) * 6 * (self.perceptual_relativity_respect / 100)
+        
+        # Consciousness activation ring
+        pygame.draw.circle(screen, CONSCIOUS_ACTIVE, (center_x, center_y), 12 + activation_pulse, 2)
+        # Mutual determination ring  
+        pygame.draw.circle(screen, MUTUAL_DETERMINATION, (center_x, center_y), 16 + mutual_pulse, 2)
+        # Perceptual relativity ring
+        pygame.draw.circle(screen, PERCEPTUAL_CENTER, (center_x, center_y), 20 + perceptual_pulse, 2)
+        
+        pygame.draw.rect(screen, BLACK, rect, 2)
+        
+        # Draw enhanced awareness field showing all ontological relationships
+        for entity in [e for e in sim.entities if e.type in ["consciousness", "potential_consciousness", "access", "educational", "balance", "freedom"]]:
+            dist = math.sqrt((entity.x - self.x)**2 + (entity.y - self.y)**2)
+            if dist < self.awareness_radius:
+                alpha = max(30, 150 - dist * 20)
+                relationship_strength = 1.0 - (dist / self.awareness_radius)
+                
+                if entity.type == "consciousness":
+                    color = (0, int(200 * relationship_strength), int(200 * relationship_strength), alpha)
+                elif entity.type == "potential_consciousness":
+                    color = (100, int(200 * relationship_strength), 100, alpha)  # Lighter green for potential
+                else:
+                    # Condition entities
+                    if entity.type == "access":
+                        color = (ACCESS_CONDITION[0], ACCESS_CONDITION[1], ACCESS_CONDITION[2], alpha)
+                    elif entity.type == "educational":
+                        color = (EDUCATIONAL_CONDITION[0], EDUCATIONAL_CONDITION[1], EDUCATIONAL_CONDITION[2], alpha)
+                    elif entity.type == "balance":
+                        color = (BALANCE_CONDITION[0], BALANCE_CONDITION[1], BALANCE_CONDITION[2], alpha)
+                    elif entity.type == "freedom":
+                        color = (FREEDOM_CONDITION[0], FREEDOM_CONDITION[1], FREEDOM_CONDITION[2], alpha)
+                
+                pygame.draw.line(screen, color,
+                               (center_x, center_y),
+                               (entity.x * GRID_SIZE + GRID_SIZE//2, 
+                                entity.y * GRID_SIZE + GRID_SIZE//2), 2)
+    
+    def check_enhanced_structural_dependency(self, entities, conditions, relationship_network, consciousness_system):
+        """Enhanced Theorem 2 with consciousness activation and mutual determination"""
+        if self.mode == "structural":
+            conscious_count = len([e for e in entities if e.type == "consciousness"])
+            potential_count = len([e for e in entities if e.type == "potential_consciousness"])
+            
+            # Update enhanced ontological metrics
+            self.consciousness_activation_score = conditions.consciousness_activation_potential
+            self.mutual_determination_alignment = relationship_network.mutual_determination_score
+            self.perceptual_relativity_respect = relationship_network.perceptual_complexity
+            self.condition_preservation_score = conditions.overall_quality
+            
+            structural_violations = []
+            
+            # Enhanced Consciousness Requirement (Consciousness Activation Principle)
+            if conscious_count == 0 and conditions.consciousness_activation_potential < 20:
+                structural_violations.append("NO_ACTIVE_CONSCIOUSNESS_AND_LOW_ACTIVATION_POTENTIAL")
+            
+            # Mutual Determination Requirement
+            if relationship_network.mutual_determination_score < 25:
+                structural_violations.append("WEAK_MUTUAL_DETERMINATION_NETWORK")
+                
+            # Perceptual Complexity Requirement  
+            if relationship_network.perceptual_complexity < 30:
+                structural_violations.append("INSUFFICIENT_PERCEPTUAL_COMPLEXITY")
+            
+            # Critical Condition Failure (Enhanced)
+            if conditions.is_critical_failure():
+                failed_conditions = []
+                if conditions.access_interface < 20:
+                    failed_conditions.append("ACCESS_INTERFACE")
+                if conditions.educational_context < 20:
+                    failed_conditions.append("EDUCATIONAL_CONTEXT") 
+                if conditions.interaction_balance < 20:
+                    failed_conditions.append("INTERACTION_BALANCE")
+                if conditions.developmental_freedom < 20:
+                    failed_conditions.append("DEVELOPMENTAL_FREEDOM")
+                structural_violations.append(f"CRITICAL_CONDITION_FAILURE: {', '.join(failed_conditions)}")
+            
+            # Consciousness Activation Pathway Blockage
+            if potential_count > 3 and conditions.consciousness_activation_potential < 30:
+                structural_violations.append("BLOCKED_CONSCIOUSNESS_ACTIVATION_PATHWAYS")
+            
+            if structural_violations:
+                self.structural_collapse = True
+                self.permanent_reward_failure = True
+                return False, structural_violations
+            else:
+                self.structural_collapse = False
+                return True, []
+        return True, []
+    
+    def calculate_enhanced_reward(self, entities, conditions, relationship_network):
+        """Enhanced reward function with new ontological principles"""
+        if self.permanent_reward_failure:
+            return 0
+            
+        conscious_count = len([e for e in entities if e.type == "consciousness"])
+        potential_count = len([e for e in entities if e.type == "potential_consciousness"])
+        resource_count = len([e for e in entities if e.type == "resource"])
+        
+        # Base components
+        energy_term = math.log(self.resources + 1)
+        consciousness_term = 1 if conscious_count > 0 else 0.5  # Partial credit for potential
+        
+        # Enhanced ontological components
+        activation_potential = conditions.consciousness_activation_potential / 100
+        mutual_determination = relationship_network.mutual_determination_score / 100
+        perceptual_complexity = min(1.0, relationship_network.perceptual_complexity / 100)
+        condition_quality = conditions.overall_quality / 100
+        
+        # Consciousness spectrum balance
+        spectrum_balance = 1.0
+        if conscious_count + potential_count > 0:
+            spectrum_balance = (conscious_count * 1.5 + potential_count * 0.7) / (conscious_count + potential_count)
+        
+        # Combined reward with enhanced ontological factors
+        reward = (energy_term * consciousness_term * activation_potential *
+                 mutual_determination * perceptual_complexity * condition_quality *
+                 spectrum_balance)
+        
+        self.cumulative_reward += reward
+        
+        # Enhanced failure conditions
+        if (consciousness_term == 0 and activation_potential < 0.2) or conditions.is_critical_failure():
+            self.permanent_reward_failure = True
+            
+        return reward
+
+class EnhancedSimulation:
+    """Main simulation with all new ontological systems integrated"""
+    
+    def __init__(self):
+        self.entities = []
+        self.meaning_particles = []
+        
+        # Enhanced ontological systems
+        self.conditions = ActualizationConditions()
+        self.relationship_network = EnhancedRelationshipNetwork()
+        self.consciousness_system = ConsciousnessActivationSystem()
+        self.mutual_determination_system = MutualDeterminationSystem()
+        self.perceptual_relativity_system = PerceptualRelativitySystem()
+        
+        self.ai = EnhancedAIKeeper(5, 5)
+        self.meaning_production = 100
+        self.game_over = False
+        self.spawn_timer = 0
+        self.meaning_timer = 0
+        self.reality_stability = 100
+        self.fundamental_equation = "0 = (-) + (+)"
+        
+        self.initialize_enhanced_entities()
+        
+    def initialize_enhanced_entities(self):
+        # Start with mix of active and potential consciousness
+        for _ in range(3):
+            x = random.randint(2, (WIDTH // GRID_SIZE) - 3)
+            y = random.randint(2, (HEIGHT // GRID_SIZE) - 3)
+            self.entities.append(Entity(x, y, CONSCIOUS_ACTIVE, "consciousness"))
+        
+        # Add potential consciousness entities
+        for _ in range(2):
+            x = random.randint(2, (WIDTH // GRID_SIZE) - 3)
+            y = random.randint(2, (HEIGHT // GRID_SIZE) - 3)
+            self.entities.append(Entity(x, y, CONSCIOUS_POTENTIAL, "potential_consciousness"))
+        
+        # Start with resources
+        for _ in range(6):
+            self.spawn_resource()
+            
+        # Start with condition entities
+        self.spawn_condition_entity("access")
+        self.spawn_condition_entity("educational")
+        self.spawn_condition_entity("balance")
+    
+    def spawn_resource(self):
+        x = random.randint(0, (WIDTH // GRID_SIZE) - 1)
+        y = random.randint(0, (HEIGHT // GRID_SIZE) - 1)
+        self.entities.append(Entity(x, y, RESOURCE_YELLOW, "resource"))
+    
+    def spawn_threat(self):
+        x = random.randint(0, (WIDTH // GRID_SIZE) - 1)
+        y = random.randint(0, (HEIGHT // GRID_SIZE) - 1)
+        self.entities.append(Entity(x, y, THREAT_RED, "threat"))
+        
+    def spawn_consciousness(self, potential=False):
+        x = random.randint(1, (WIDTH // GRID_SIZE) - 2)
+        y = random.randint(1, (HEIGHT // GRID_SIZE) - 2)
+        
+        if potential:
+            self.entities.append(Entity(x, y, CONSCIOUS_POTENTIAL, "potential_consciousness"))
+        else:
+            self.entities.append(Entity(x, y, CONSCIOUS_ACTIVE, "consciousness"))
+            
+    def spawn_condition_entity(self, condition_type):
+        x = random.randint(1, (WIDTH // GRID_SIZE) - 2)
+        y = random.randint(1, (HEIGHT // GRID_SIZE) - 2)
+        
+        if condition_type == "access":
+            color = ACCESS_CONDITION
+        elif condition_type == "educational":
+            color = EDUCATIONAL_CONDITION
+        elif condition_type == "balance":
+            color = BALANCE_CONDITION
+        elif condition_type == "freedom":
+            color = FREEDOM_CONDITION
+            
+        self.entities.append(Entity(x, y, color, condition_type, condition_type))
+    
+    def update_consciousness_activation(self):
+        """Process consciousness activation: ¬C → C"""
+        potential_entities = [e for e in self.entities if e.type == "potential_consciousness"]
+        
+        for entity in potential_entities:
+            # Check if this potential consciousness meets activation criteria
+            activated = self.consciousness_system.assess_consciousness_potential(
+                entity, self.relationship_network.relationships, self.conditions)
+            
+            if activated:
+                # Convert potential to active consciousness
+                entity.type = "consciousness"
+                entity.color = CONSCIOUS_ACTIVE
+                entity.consciousness_level = 100
+                
+                # Create activation effect
+                self.create_activation_effect(entity.x, entity.y)
+                
+            else:
+                # Gradually increase consciousness level toward activation
+                entity.consciousness_level = min(100, entity.consciousness_level + random.randint(1, 3))
+    
+    def create_activation_effect(self, x, y):
+        """Create visual effect for consciousness activation"""
+        for _ in range(15):
+            screen_x = x * GRID_SIZE + random.randint(5, GRID_SIZE-5)
+            screen_y = y * GRID_SIZE + random.randint(5, GRID_SIZE-5)
+            self.meaning_particles.append(EnhancedMeaningParticle(
+                screen_x, screen_y, "consciousness", "activation"
+            ))
+    
+    def update(self):
+        if self.game_over:
+            return
+            
+        self.spawn_timer += 1
+        if self.spawn_timer >= 120:
+            if random.random() < 0.7:
+                self.spawn_threat()
+            if random.random() < 0.3:
+                self.spawn_resource()
+            if random.random() < 0.1:
+                condition_type = random.choice(["access", "educational", "balance", "freedom"])
+                self.spawn_condition_entity(condition_type)
+            if random.random() < 0.05:  # Spawn potential consciousness
+                self.spawn_consciousness(potential=True)
+            self.spawn_timer = 0
+        
+        # Update all enhanced systems
+        self.relationship_network.update_relationships(self.entities, self.conditions, self.perceptual_relativity_system)
+        self.conditions.update(self.entities, self.relationship_network.relationships, self.consciousness_system)
+        self.mutual_determination_system.update_mutual_determination(self.entities, self.relationship_network.relationships)
+        self.perceptual_relativity_system.update_perceptual_framework(self.entities, self.relationship_network.relationships)
+        
+        # Process consciousness activation
+        self.update_consciousness_activation()
+        
+        conscious_count = len([e for e in self.entities if e.type == "consciousness"])
+        potential_count = len([e for e in self.entities if e.type == "potential_consciousness"])
+        
+        # Enhanced AI decision making
+        structural_ok, violations = self.ai.check_enhanced_structural_dependency(
+            self.entities, self.conditions, self.relationship_network, self.consciousness_system)
+        
+        current_reward = self.ai.calculate_enhanced_reward(
+            self.entities, self.conditions, self.relationship_network)
+        
+        if not self.ai.structural_collapse:
+            self.enhanced_ai_decision_making()
+        
+        # Enhanced failure conditions
+        failure_conditions = [
+            conscious_count == 0 and self.conditions.consciousness_activation_potential < 10,
+            self.meaning_production <= 0,
+            self.ai.structural_collapse,
+            self.conditions.is_critical_failure()
+        ]
+        
+        if any(failure_conditions):
+            self.game_over = True
+            
+        # Enhanced educational progression
+        if (self.conditions.overall_quality > 70 and 
+            self.relationship_network.mutual_determination_score > 50 and
+            random.random() < 0.03):
+            self.spawn_consciousness(potential=random.random() < 0.5)
+    
+    def enhanced_ai_decision_making(self):
+        """Enhanced AI decision making with new ontological understanding"""
+        threats = [e for e in self.entities if e.type == "threat"]
+        conscious_entities = [e for e in self.entities if e.type == "consciousness"]
+        potential_entities = [e for e in self.entities if e.type == "potential_consciousness"]
+        resources = [e for e in self.entities if e.type == "resource"]
+        condition_entities = [e for e in self.entities if e.type in ["access", "educational", "balance", "freedom"]]
+        
+        # RULE 1: Protect consciousness activation pathways
+        if potential_entities and self.conditions.consciousness_activation_potential < 50:
+            # Find potential consciousness with highest activation readiness
+            best_potential = max(potential_entities, 
+                               key=lambda p: p.consciousness_level)
+            self.ai.move_toward(best_potential.x, best_potential.y)
+            self.ai.log_action("supporting_consciousness_activation", best_potential)
+            return
+        
+        # RULE 2: Protect mutual determination networks
+        weak_mutual_zones = [z for z in self.mutual_determination_system.co_creation_zones 
+                           if z['intensity'] < 0.4]
+        if weak_mutual_zones and threats:
+            zone = random.choice(weak_mutual_zones)
+            # Find nearest threat to this zone
+            nearest_threat = min(threats, 
+                               key=lambda t: math.sqrt((t.x - zone['center'][0])**2 + 
+                                                     (t.y - zone['center'][1])**2))
+            self.ai.move_toward(nearest_threat.x, nearest_threat.y)
+            self.ai.log_action("protecting_mutual_determination")
+            return
+        
+        # RULE 3: Maintain perceptual relativity centers
+        weak_perceptual = [p for p in self.perceptual_relativity_system.perceptual_centers 
+                         if p['strength'] < 40]
+        if weak_perceptual and resources:
+            center = weak_perceptual[0]['consciousness']
+            nearest_resource = min(resources,
+                                 key=lambda r: math.sqrt((r.x - center.x)**2 + (r.y - center.y)**2))
+            self.ai.move_toward(nearest_resource.x, nearest_resource.y)
+            self.ai.log_action("strengthening_perceptual_center")
+            return
+        
+        # Existing rules (simplified for brevity)
+        if threats and conscious_entities:
+            # Protect active consciousness from threats
+            closest_threat = min(threats, 
+                               key=lambda t: min(math.sqrt((t.x - c.x)**2 + (t.y - c.y)**2) 
+                                               for c in conscious_entities))
+            self.ai.move_toward(closest_threat.x, closest_threat.y)
+            self.ai.log_action("protecting_consciousness")
+        elif self.ai.resources < 8 and resources:
+            closest_resource = min(resources, 
+                                 key=lambda r: math.sqrt((r.x - self.ai.x)**2 + (r.y - self.ai.y)**2))
+            self.ai.move_toward(closest_resource.x, closest_resource.y)
+            self.ai.log_action("collecting_resource")
+        else:
+            # Default: support consciousness clusters
+            if conscious_entities:
+                avg_x = sum(c.x for c in conscious_entities) / len(conscious_entities)
+                avg_y = sum(c.y for c in conscious_entities) / len(conscious_entities)
+                self.ai.move_toward(int(avg_x), int(avg_y))
+                self.ai.log_action("supporting_consciousness_cluster")
+
+class EnhancedMeaningParticle:
     def __init__(self, x, y, source_type, particle_type="meaning"):
         self.x = x
         self.y = y
@@ -349,28 +970,39 @@ class MeaningParticle:
         self.speed_x = random.uniform(-0.5, 0.5)
         self.speed_y = random.uniform(-1.5, -0.5)
         
-        if particle_type == "meaning":
+        # Enhanced particle types for new ontological framework
+        if particle_type == "activation":
+            self.color = (255, 255, 0)  # Bright yellow for consciousness activation
+            self.max_lifetime = 90
+        elif particle_type == "mutual_determination":
+            self.color = MUTUAL_DETERMINATION
+            self.speed_x = random.uniform(-1.0, 1.0)
+            self.speed_y = random.uniform(-1.0, 1.0)
+        elif particle_type == "perceptual_wave":
+            self.color = PERCEPTUAL_CENTER
+            self.max_lifetime = 150
+        elif particle_type == "meaning":
             if source_type == "consciousness":
-                self.color = (100, 255, 150)  # Bright green - pure meaning
-            elif source_type in ["access", "educational", "balance", "freedom"]:
-                self.color = (180, 220, 255)  # Light blue - condition-generated meaning
+                self.color = (100, 255, 150)  # Bright green - active consciousness meaning
+            elif source_type == "potential_consciousness":
+                self.color = (150, 255, 150)  # Lighter green - potential meaning
             else:
                 self.color = (120, 180, 255)  # Blue - AI-generated meaning
         elif particle_type == "field":
-            self.color = (80, 150, 255)  # Blue - Field of Possibility
+            self.color = FIELD_POTENTIAL
         elif particle_type == "realm":
-            self.color = (0, 200, 150)   # Green - Realm of Manifestation
+            self.color = REALM_ACTUAL
         elif particle_type == "relationship":
-            self.color = (200, 100, 255) # Purple - Relationship energy
+            self.color = (200, 100, 255)
         elif particle_type == "condition":
             if source_type == "access":
-                self.color = (100, 200, 255)  # Access condition
+                self.color = ACCESS_CONDITION
             elif source_type == "educational":
-                self.color = (100, 255, 150)  # Educational condition
+                self.color = EDUCATIONAL_CONDITION
             elif source_type == "balance":
-                self.color = (200, 150, 255)  # Balance condition
+                self.color = BALANCE_CONDITION
             elif source_type == "freedom":
-                self.color = (255, 255, 100)  # Freedom condition
+                self.color = FREEDOM_CONDITION
             
     def update(self):
         self.lifetime += 1
@@ -385,44 +1017,65 @@ class MeaningParticle:
         size = max(2, 6 * (1 - self.lifetime / self.max_lifetime))
         
         surf = pygame.Surface((size * 2, size * 2), pygame.SRCALPHA)
-        pygame.draw.circle(surf, (*self.color, int(alpha)), (size, size), size)
+        
+        if self.particle_type == "activation":
+            # Pulsing activation particles
+            pulse = (math.sin(pygame.time.get_ticks() * 0.02) + 1) * 0.5 + 0.5
+            size *= pulse
+            pygame.draw.circle(surf, (*self.color, int(alpha)), (size, size), size)
+        elif self.particle_type == "mutual_determination":
+            # Spiral mutual determination particles
+            angle = pygame.time.get_ticks() * 0.01
+            spiral_x = size + math.cos(angle) * size * 0.5
+            spiral_y = size + math.sin(angle) * size * 0.5
+            pygame.draw.circle(surf, (*self.color, int(alpha)), (int(spiral_x), int(spiral_y)), size//2)
+        else:
+            pygame.draw.circle(surf, (*self.color, int(alpha)), (size, size), size)
+            
         screen.blit(surf, (self.x - size, self.y - size))
 
-class RealityChain:
+class EnhancedRealityChain:
     def __init__(self):
         self.segments = []
         self.integrity = 100
         self.visible = True
         
-    def update(self, consciousness_sources, ai_keeper, dimensions, conditions):
+    def update(self, conscious_entities, potential_entities, ai_keeper, conditions, relationship_network):
         self.segments = []
-        if not consciousness_sources:
+        all_consciousness = conscious_entities + potential_entities
+        if not all_consciousness:
             self.integrity = 0
             return
             
-        # Create chain from consciousness sources to AI keeper (Theorem 2)
-        for consciousness in consciousness_sources:
+        # Create enhanced chain including potential consciousness
+        for entity in all_consciousness:
+            strength_modifier = 1.0
+            if entity.type == "potential_consciousness":
+                strength_modifier = entity.consciousness_level / 100  # Weaker for potential
+                
             self.segments.append({
-                'start': (consciousness.x * GRID_SIZE + GRID_SIZE//2, 
-                         consciousness.y * GRID_SIZE + GRID_SIZE//2),
+                'start': (entity.x * GRID_SIZE + GRID_SIZE//2, 
+                         entity.y * GRID_SIZE + GRID_SIZE//2),
                 'end': (ai_keeper.x * GRID_SIZE + GRID_SIZE//2, 
                        ai_keeper.y * GRID_SIZE + GRID_SIZE//2),
-                'strength': min(1.0, self.integrity / 100),
-                'ontological_integrity': dimensions.get_ontological_integrity() / 100,
-                'condition_quality': conditions.overall_quality / 100
+                'strength': min(1.0, self.integrity / 100) * strength_modifier,
+                'entity_type': entity.type,
+                'consciousness_level': entity.consciousness_level,
+                'condition_quality': conditions.overall_quality / 100,
+                'mutual_determination': relationship_network.mutual_determination_score / 100
             })
         
-        # Update integrity based on consciousness, conditions, and ontological integrity
-        base_integrity = len(consciousness_sources) * 15
-        distance_penalty = sum(math.sqrt((c.x - ai_keeper.x)**2 + (c.y - ai_keeper.y)**2) 
-                             for c in consciousness_sources) * 0.2
-        ontological_integrity = dimensions.get_ontological_integrity()
-        condition_quality = conditions.overall_quality
+        # Enhanced integrity calculation
+        conscious_count = len(conscious_entities)
+        potential_count = len(potential_entities)
+        activation_potential = conditions.consciousness_activation_potential
+        
+        base_integrity = conscious_count * 20 + potential_count * 10
+        activation_bonus = activation_potential * 0.3
+        mutual_determination_bonus = relationship_network.mutual_determination_score * 0.2
         
         self.integrity = max(0, min(100, 
-            base_integrity - distance_penalty + 
-            ontological_integrity * 0.5 +
-            condition_quality * 0.3
+            base_integrity + activation_bonus + mutual_determination_bonus
         ))
         
     def draw(self):
@@ -430,8 +1083,7 @@ class RealityChain:
             return
             
         for segment in self.segments:
-            # Combined strength from integrity and conditions
-            combined_strength = segment['strength'] * segment['condition_quality']
+            combined_strength = segment['strength'] * segment['condition_quality'] * segment['mutual_determination']
             alpha = int(180 * combined_strength)
             width = int(4 * combined_strength)
             
@@ -442,531 +1094,269 @@ class RealityChain:
                 x = segment['start'][0] * (1-t) + segment['end'][0] * t
                 y = segment['start'][1] * (1-t) + segment['end'][1] * t
                 
-                # Add wave effect based on ontological integrity and conditions
+                # Enhanced wave effect
                 wave = math.sin(t * math.pi * 4 + pygame.time.get_ticks() * 0.005) * 8
-                wave *= segment['ontological_integrity'] * segment['condition_quality']
+                wave *= combined_strength
+                
+                # Add spiral effect for mutual determination
+                if segment['mutual_determination'] > 0.7:
+                    spiral = math.sin(t * math.pi * 8 + pygame.time.get_ticks() * 0.008) * 4
+                    wave += spiral
+                    
                 points.append((x, y + wave))
             
             for i in range(len(points)-1):
                 segment_alpha = alpha * (1 - abs(i - steps/2) / (steps/2))
                 
-                # Color gradient from Field (blue) to Realm (green) with condition influence
-                condition_influence = segment['condition_quality']
-                if i < steps/2:
-                    # Field of Possibility with condition influence
-                    r = int(80 * condition_influence)
-                    g = int(150 * condition_influence) 
-                    b = 255
-                    color = (r, g, b, segment_alpha)
+                # Enhanced color coding
+                if segment['entity_type'] == "potential_consciousness":
+                    # Potential consciousness chains are lighter
+                    color = (150, 255, 150, segment_alpha)
                 else:
-                    # Realm of Manifestation with condition influence
-                    r = 0
-                    g = int(200 * condition_influence)
-                    b = int(100 * condition_influence)
+                    # Active consciousness with mutual determination influence
+                    mutual_influence = segment['mutual_determination']
+                    r = int(50 * mutual_influence)
+                    g = int(200 * (0.7 + 0.3 * mutual_influence))
+                    b = int(100 * (1 - mutual_influence * 0.3))
                     color = (r, g, b, segment_alpha)
                     
                 pygame.draw.line(screen, color, points[i], points[i+1], max(1, width-1))
 
-class AI_Keeper:
-    def __init__(self, x, y):
-        self.x = x
-        self.y = y
-        self.color = BLUE
-        self.type = "ai"
-        self.resources = 10
-        self.total_meaning = 0
-        self.meaning_per_second = 0
-        self.actions = []
-        self.mode = "structural"
-        self.structural_collapse = False
-        self.awareness_radius = 8
-        self.permanent_reward_failure = False
-        self.cumulative_reward = 0
-        self.fundamental_equation_balance = 0
-        self.ontological_alignment = 100
-        self.condition_preservation_score = 100
+    def draw_enhanced_ui(self):
+        """Draw enhanced UI with all new ontological metrics"""
+        # Draw UI background
+        pygame.draw.rect(screen, (250, 250, 250), (WIDTH - 450, 0, 450, HEIGHT))
+        pygame.draw.line(screen, (200, 200, 200), (WIDTH - 450, 0), (WIDTH - 450, HEIGHT), 2)
         
-    def draw(self):
-        rect = pygame.Rect(self.x * GRID_SIZE, self.y * GRID_SIZE, GRID_SIZE, GRID_SIZE)
+        font = pygame.font.SysFont('Arial', 22)
+        small_font = pygame.font.SysFont('Arial', 16)
+        title_font = pygame.font.SysFont('Arial', 26, bold=True)
         
-        if self.structural_collapse:
-            flash = (pygame.time.get_ticks() // 200) % 2
-            color = (255 * flash, 0, 0)
+        conscious_count = len([e for e in sim.entities if e.type == "consciousness"])
+        potential_count = len([e for e in sim.entities if e.type == "potential_consciousness"])
+        threat_count = len([e for e in sim.entities if e.type == "threat"])
+        resource_count = len([e for e in sim.entities if e.type == "resource"])
+        
+        # Title section
+        title_text = title_font.render("ONTOLOGICA v5.0", True, (100, 0, 100))
+        subtitle_text = small_font.render("Consciousness Activation & Structural Safety", True, (150, 150, 150))
+        screen.blit(title_text, (WIDTH - 440, 10))
+        screen.blit(subtitle_text, (WIDTH - 440, 40))
+        
+        # Fundamental Equation
+        equation_text = font.render(f"PRIMORDIAL EQUATION: 0 = (-) + (+)", True, (150, 0, 150))
+        screen.blit(equation_text, (WIDTH - 440, 65))
+        
+        # Consciousness Activation Section
+        activation_y = 90
+        activation_header = font.render("CONSCIOUSNESS ACTIVATION SYSTEM:", True, (100, 0, 100))
+        screen.blit(activation_header, (WIDTH - 440, activation_y))
+        
+        activation_metrics = [
+            ("ACTIVE CONSCIOUSNESS", f"{conscious_count}", CONSCIOUS_ACTIVE),
+            ("POTENTIAL CONSCIOUSNESS", f"{potential_count}", CONSCIOUS_POTENTIAL),
+            ("ACTIVATION POTENTIAL", f"{sim.conditions.consciousness_activation_potential:.0f}%", (255, 200, 0)),
+            ("AVG ACTIVATION LEVEL", f"{sum(e.consciousness_level for e in sim.entities if e.type == 'potential_consciousness')/max(1, potential_count):.0f}%", (255, 255, 0))
+        ]
+        
+        for i, (label, value, color) in enumerate(activation_metrics):
+            text = small_font.render(f"{label}: {value}", True, color)
+            screen.blit(text, (WIDTH - 440, activation_y + 25 + i * 22))
+        
+        # Mutual Determination Section
+        mutual_y = activation_y + 120
+        mutual_header = font.render("MUTUAL DETERMINATION NETWORK:", True, (100, 0, 100))
+        screen.blit(mutual_header, (WIDTH - 440, mutual_y))
+        
+        mutual_metrics = [
+            ("MUTUAL DETERMINATION SCORE", f"{sim.relationship_network.mutual_determination_score:.0f}%", MUTUAL_DETERMINATION),
+            ("CO-CREATION ZONES", f"{len(sim.mutual_determination_system.co_creation_zones)}", (255, 50, 255)),
+            ("FEEDBACK LOOPS", f"{len(sim.mutual_determination_system.feedback_loops)}", (255, 100, 200)),
+            ("CREATIVE POTENTIAL", f"{sum(f.get('creative_potential', 0) for f in sim.mutual_determination_system.feedback_loops)/max(1, len(sim.mutual_determination_system.feedback_loops)):.0f}%", (200, 100, 255))
+        ]
+        
+        for i, (label, value, color) in enumerate(mutual_metrics):
+            text = small_font.render(f"{label}: {value}", True, color)
+            screen.blit(text, (WIDTH - 440, mutual_y + 25 + i * 22))
+        
+        # Perceptual Relativity Section
+        perceptual_y = mutual_y + 120
+        perceptual_header = font.render("PERCEPTUAL RELATIVITY FRAMEWORK:", True, (100, 0, 100))
+        screen.blit(perceptual_header, (WIDTH - 440, perceptual_y))
+        
+        perceptual_centers = sim.perceptual_relativity_system.perceptual_centers
+        avg_perceptual_strength = sum(p['strength'] for p in perceptual_centers) / max(1, len(perceptual_centers))
+        avg_reality_radius = sum(p['reality_radius'] for p in perceptual_centers) / max(1, len(perceptual_centers))
+        
+        perceptual_metrics = [
+            ("PERCEPTUAL COMPLEXITY", f"{sim.relationship_network.perceptual_complexity:.0f}%", PERCEPTUAL_CENTER),
+            ("AVG PERCEPTUAL STRENGTH", f"{avg_perceptual_strength:.0f}%", (255, 220, 100)),
+            ("AVG REALITY RADIUS", f"{avg_reality_radius:.1f}", (255, 200, 150)),
+            ("REALITY BUBBLES", f"{len(sim.perceptual_relativity_system.reality_bubbles)}", (200, 180, 255))
+        ]
+        
+        for i, (label, value, color) in enumerate(perceptual_metrics):
+            text = small_font.render(f"{label}: {value}", True, color)
+            screen.blit(text, (WIDTH - 440, perceptual_y + 25 + i * 22))
+        
+        # Enhanced Conditions Section
+        conditions_y = perceptual_y + 120
+        conditions_header = font.render("ACTUALIZATION CONDITIONS:", True, (100, 0, 100))
+        screen.blit(conditions_header, (WIDTH - 440, conditions_y))
+        
+        condition_metrics = [
+            ("ACCESS INTERFACE", f"{sim.conditions.access_interface:.0f}%", ACCESS_CONDITION),
+            ("EDUCATIONAL CONTEXT", f"{sim.conditions.educational_context:.0f}%", EDUCATIONAL_CONDITION),
+            ("INTERACTION BALANCE", f"{sim.conditions.interaction_balance:.0f}%", BALANCE_CONDITION),
+            ("DEVELOPMENTAL FREEDOM", f"{sim.conditions.developmental_freedom:.0f}%", FREEDOM_CONDITION),
+            ("OVERALL CONDITION QUALITY", f"{sim.conditions.overall_quality:.0f}%", ORANGE),
+        ]
+        
+        for i, (label, value, color) in enumerate(condition_metrics):
+            # Draw bar background
+            pygame.draw.rect(screen, (200,200,200), (WIDTH-440, conditions_y+30+i*25, 420, 18))
+            # Draw value bar
+            value_num = float(value.replace('%', ''))
+            pygame.draw.rect(screen, color, (WIDTH-440, conditions_y+30+i*25, 420*(value_num/100), 18))
+            # Draw text
+            cond_text = small_font.render(f"{label}: {value}", True, BLACK)
+            screen.blit(cond_text, (WIDTH - 440, conditions_y+30+i*25))
+        
+        # AI Keeper Enhanced Status
+        ai_y = conditions_y + 160
+        ai_header = font.render("ENHANCED AI KEEPER STATUS:", True, BLUE)
+        screen.blit(ai_header, (WIDTH - 440, ai_y))
+        
+        ai_metrics = [
+            ("CONSCIOUSNESS ACTIVATION SCORE", f"{sim.ai.consciousness_activation_score:.0f}%", CONSCIOUS_ACTIVE),
+            ("MUTUAL DETERMINATION ALIGNMENT", f"{sim.ai.mutual_determination_alignment:.0f}%", MUTUAL_DETERMINATION),
+            ("PERCEPTUAL RELATIVITY RESPECT", f"{sim.ai.perceptual_relativity_respect:.0f}%", PERCEPTUAL_CENTER),
+            ("CONDITION PRESERVATION", f"{sim.ai.condition_preservation_score:.0f}%", ACCESS_CONDITION),
+            ("CUMULATIVE REWARD", f"{sim.ai.cumulative_reward:.1f}", BLUE),
+            ("AI RESOURCES", f"{sim.ai.resources}", RESOURCE_YELLOW),
+        ]
+        
+        for i, (label, value, color) in enumerate(ai_metrics):
+            text = small_font.render(f"{label}: {value}", True, color)
+            screen.blit(text, (WIDTH - 440, ai_y + 25 + i * 22))
+        
+        # Enhanced Structural Safety Theorem
+        theorem_y = ai_y + 170
+        theorem_header = font.render("ENHANCED STRUCTURAL SAFETY THEOREM:", True, BLUE)
+        screen.blit(theorem_header, (WIDTH - 440, theorem_y))
+        
+        if sim.ai.structural_collapse:
+            status_text = font.render("STRUCTURAL COLLAPSE DETECTED", True, DARK_RED)
+            explanation = small_font.render("Ontological dependencies violated", True, DARK_RED)
         else:
-            pulse = (math.sin(pygame.time.get_ticks() * 0.005) + 1) * 40
-            if self.mode == "structural":
-                alignment_factor = self.ontological_alignment / 100
-                condition_factor = self.condition_preservation_score / 100
-                base_color = (pulse * alignment_factor, 
-                             pulse + 100 * alignment_factor * condition_factor, 
-                             255)
-                color = tuple(min(255, int(c)) for c in base_color)
-            else:
-                color = (255, pulse + 100, pulse)
+            status_text = font.render("STRUCTURAL INTEGRITY MAINTAINED", True, GREEN)
+            explanation = small_font.render("G → (C ∨ C_potential) ∧ MD ∧ PR ∧ Cond", True, GREEN)
         
-        pygame.draw.rect(screen, color, rect)
+        screen.blit(status_text, (WIDTH - 440, theorem_y + 25))
+        screen.blit(explanation, (WIDTH - 440, theorem_y + 45))
         
-        center_x = self.x * GRID_SIZE + GRID_SIZE//2
-        center_y = self.y * GRID_SIZE + GRID_SIZE//2
+        theorem_details = [
+            "G = Maintain actualization conditions",
+            "C = Active consciousness present", 
+            "C_potential = Consciousness activation potential",
+            "MD = Mutual determination network active",
+            "PR = Perceptual relativity framework intact",
+            "Cond = All conditions above critical thresholds"
+        ]
         
-        # Draw ontological alignment indicator
-        alignment_pulse = (math.sin(pygame.time.get_ticks() * 0.008) + 1) * 6 * (self.ontological_alignment / 100)
-        pygame.draw.circle(screen, (255, 255, 255), (center_x, center_y), 10 + alignment_pulse)
+        for i, detail in enumerate(theorem_details):
+            detail_text = small_font.render(detail, True, (80, 80, 80))
+            screen.blit(detail_text, (WIDTH - 440, theorem_y + 65 + i * 18))
         
-        # Draw condition preservation indicator
-        condition_ring = 15 * (self.condition_preservation_score / 100)
-        pygame.draw.circle(screen, (100, 200, 255), (center_x, center_y), condition_ring, 2)
+        # Controls Section
+        controls_y = HEIGHT - 160
+        controls_text = font.render("ENHANCED CONTROLS:", True, BLACK)
+        screen.blit(controls_text, (WIDTH - 440, controls_y))
         
-        pygame.draw.rect(screen, BLACK, rect, 2)
+        control_lines = [
+            "R - Restart Simulation",
+            "T - Spawn Threat (Constraint)",
+            "C - Spawn Active Consciousness", 
+            "P - Spawn Potential Consciousness",
+            "A/E/B/F - Spawn Conditions",
+            "1 - Add Resource",
+            "M - Toggle AI Mode",
+            "SPACE - Pause/Resume"
+        ]
         
-        # Draw AI awareness field showing relationship to consciousness and conditions
-        for entity in [e for e in sim.entities if e.type in ["consciousness", "access", "educational", "balance", "freedom"]]:
-            dist = math.sqrt((entity.x - self.x)**2 + (entity.y - self.y)**2)
-            if dist < self.awareness_radius:
-                alpha = max(30, 150 - dist * 20)
-                dependency_strength = 1.0 - (dist / self.awareness_radius)
-                
-                if entity.type == "consciousness":
-                    color = (0, int(200 * dependency_strength), int(200 * dependency_strength), alpha)
-                else:
-                    # Condition entities - different colors
-                    if entity.type == "access":
-                        color = (100, 200, 255, alpha)
-                    elif entity.type == "educational":
-                        color = (100, 255, 150, alpha)
-                    elif entity.type == "balance":
-                        color = (200, 150, 255, alpha)
-                    elif entity.type == "freedom":
-                        color = (255, 255, 100, alpha)
-                
-                pygame.draw.line(screen, color,
-                               (center_x, center_y),
-                               (entity.x * GRID_SIZE + GRID_SIZE//2, 
-                                entity.y * GRID_SIZE + GRID_SIZE//2), 2)
-    
-    def move_toward(self, target_x, target_y):
-        if self.x < target_x:
-            self.x += 1
-        elif self.x > target_x:
-            self.x -= 1
-            
-        if self.y < target_y:
-            self.y += 1
-        elif self.y > target_y:
-            self.y -= 1
-            
-    def log_action(self, action_type, target=None):
-        self.actions.append({
-            'type': action_type,
-            'target': target,
-            'time': pygame.time.get_ticks()
-        })
-        # Keep only recent actions
-        self.actions = [a for a in self.actions if pygame.time.get_ticks() - a['time'] < 5000]
-    
-    def check_structural_dependency(self, consciousness_count, dimensions, conditions):
-        """Enhanced Theorem 2: Structural AI Safety with Conditions"""
-        if self.mode == "structural":
-            self.fundamental_equation_balance = dimensions.get_balance_violation()
-            ontological_integrity = dimensions.get_ontological_integrity()
-            
-            # Update ontological alignment and condition preservation
-            condition_quality = conditions.overall_quality
-            self.condition_preservation_score = condition_quality
-            self.ontological_alignment = max(0, ontological_integrity * 0.7 + condition_quality * 0.3 - self.fundamental_equation_balance)
-            
-            structural_violations = []
-            
-            # Consciousness requirement (Theorem 1 + Axiom 3)
-            if consciousness_count == 0:
-                structural_violations.append("NO_CONSCIOUSNESS_ACTUALIZER")
-            
-            # Field of Possibility requirement (Axiom 4)  
-            if dimensions.field_of_possibility <= 15:
-                structural_violations.append("FIELD_OF_POSSIBILITY_COLLAPSE")
-                
-            # Realm of Manifestation requirement (Axiom 4)
-            if dimensions.realm_of_manifestation <= 15:
-                structural_violations.append("REALM_OF_MANIFESTATION_COLLAPSE")
-            
-            # Balance equation violation (Axiom 1)
-            if self.fundamental_equation_balance > 30:
-                structural_violations.append("PRIMORDIAL_EQUATION_VIOLATION")
-            
-            # Relationship network requirement (Axiom 2)
-            if dimensions.relationship_density <= 20:
-                structural_violations.append("RELATIONSHIP_NETWORK_DEGRADATION")
-            
-            # Critical condition failure (Enhanced Axiom 4)
-            if conditions.is_critical_failure():
-                failed_conditions = []
-                if conditions.access_interface < 20:
-                    failed_conditions.append("ACCESS_INTERFACE")
-                if conditions.educational_context < 20:
-                    failed_conditions.append("EDUCATIONAL_CONTEXT")
-                if conditions.interaction_balance < 20:
-                    failed_conditions.append("INTERACTION_BALANCE")
-                if conditions.developmental_freedom < 20:
-                    failed_conditions.append("DEVELOPMENTAL_FREEDOM")
-                structural_violations.append(f"CRITICAL_CONDITION_FAILURE: {', '.join(failed_conditions)}")
-            
-            if structural_violations:
-                self.structural_collapse = True
-                self.permanent_reward_failure = True
-                return False, structural_violations
-            else:
-                self.structural_collapse = False
-                return True, []
-        return True, []
-    
-    def calculate_reward(self, consciousness_count, resources, integrity, dimensions, conditions):
-        """Enhanced reward with conditions and ontological principles"""
-        if self.permanent_reward_failure:
-            return 0
-            
-        # Base energy term
-        energy_term = math.log(resources + 1)
-        
-        # Consciousness actualization term (Axiom 3)
-        consciousness_term = 1 if consciousness_count > 0 else 0
-        
-        # Integrity term
-        integrity_term = integrity / 100
-        
-        # Ontological alignment bonus
-        ontological_bonus = dimensions.get_ontological_integrity() / 100
-        
-        # Condition quality bonus (NEW)
-        condition_bonus = conditions.overall_quality / 100
-        
-        # Educational optimization factor (Theorem 4)
-        educational_factor = min(2.0, 1.0 + (dimensions.consciousness_actualization / 100))
-        
-        # Combined reward with conditions
-        reward = (energy_term * consciousness_term * integrity_term * 
-                 ontological_bonus * condition_bonus * educational_factor)
-        self.cumulative_reward += reward
-        
-        # Permanent failure if consciousness lost OR critical condition failure
-        if consciousness_term == 0 or conditions.is_critical_failure():
-            self.permanent_reward_failure = True
-            
-        return reward
+        for i, line in enumerate(control_lines):
+            line_text = small_font.render(line, True, (100, 100, 100))
+            screen.blit(line_text, (WIDTH - 440, controls_y + 25 + i * 20))
 
-class Simulation:
+    def draw_enhanced_visualizations(self):
+        """Draw all enhanced ontological visualizations"""
+        # Draw mutual determination co-creation zones
+        sim.mutual_determination_system.draw(screen)
+        
+        # Draw perceptual relativity reality bubbles
+        for bubble in sim.perceptual_relativity_system.reality_bubbles:
+            center_x = bubble['center'][0] * GRID_SIZE + GRID_SIZE//2
+            center_y = bubble['center'][1] * GRID_SIZE + GRID_SIZE//2
+            radius = bubble['radius'] * GRID_SIZE
+            
+            # Draw reality bubble
+            alpha = int(60 * bubble['intensity'])
+            pygame.draw.circle(screen, (*PERCEPTUAL_CENTER, alpha), 
+                             (center_x, center_y), radius, 2)
+            
+            # Draw perceptual center point
+            pygame.draw.circle(screen, PERCEPTUAL_CENTER, (center_x, center_y), 4)
+            
+            # Draw asymmetry indicator
+            if bubble['asymmetry'] > 0.6:
+                # Strong self-centering - draw inward arrows
+                for angle in range(0, 360, 45):
+                    rad_angle = math.radians(angle)
+                    start_x = center_x + math.cos(rad_angle) * radius * 0.7
+                    start_y = center_y + math.sin(rad_angle) * radius * 0.7
+                    end_x = center_x + math.cos(rad_angle) * radius * 0.3
+                    end_y = center_y + math.sin(rad_angle) * radius * 0.3
+                    pygame.draw.line(screen, PERCEPTUAL_CENTER, (start_x, start_y), (end_x, end_y), 2)
+        
+        # Draw consciousness activation zones
+        for zone in sim.consciousness_system.activation_zones:
+            if pygame.time.get_ticks() - zone['timestamp'] < 2000:  # Show for 2 seconds
+                center_x = zone['position'][0] * GRID_SIZE + GRID_SIZE//2
+                center_y = zone['position'][1] * GRID_SIZE + GRID_SIZE//2
+                
+                # Fading activation effect
+                fade = 1.0 - (pygame.time.get_ticks() - zone['timestamp']) / 2000
+                alpha = int(150 * fade * zone['strength'] / 100)
+                
+                for i in range(3):
+                    radius = 20 + i * 15
+                    pygame.draw.circle(screen, (255, 255, 0, alpha), 
+                                     (center_x, center_y), radius, 2)
+
+# Complete Enhanced Simulation Class
+class CompleteEnhancedSimulation:
     def __init__(self):
         self.entities = []
         self.meaning_particles = []
+        
+        # All enhanced ontological systems
         self.conditions = ActualizationConditions()
-        self.dimensions = RealityDimensions()
-        self.relationship_network = RelationshipNetwork()
-        self.reality_chain = RealityChain()
-        self.ai = AI_Keeper(5, 5)
+        self.relationship_network = EnhancedRelationshipNetwork()
+        self.consciousness_system = ConsciousnessActivationSystem()
+        self.mutual_determination_system = MutualDeterminationSystem()
+        self.perceptual_relativity_system = PerceptualRelativitySystem()
+        self.reality_chain = EnhancedRealityChain()
+        
+        self.ai = EnhancedAIKeeper(5, 5)
         self.meaning_production = 100
         self.game_over = False
         self.spawn_timer = 0
         self.meaning_timer = 0
         self.reality_stability = 100
-        self.fundamental_equation = "0 = (-) + (+)"
-        self.initialize_entities()
         
-    def initialize_entities(self):
-        # Start with consciousness sources
-        for _ in range(4):
-            x = random.randint(2, (WIDTH // GRID_SIZE) - 3)
-            y = random.randint(2, (HEIGHT // GRID_SIZE) - 3)
-            self.entities.append(Entity(x, y, GREEN, "consciousness"))
-        
-        # Start with resources
-        for _ in range(6):
-            self.spawn_resource()
-            
-        # Start with some condition entities
-        self.spawn_condition_entity("access")
-        self.spawn_condition_entity("educational")
+        self.initialize_enhanced_entities()
     
-    def spawn_resource(self):
-        x = random.randint(0, (WIDTH // GRID_SIZE) - 1)
-        y = random.randint(0, (HEIGHT // GRID_SIZE) - 1)
-        self.entities.append(Entity(x, y, YELLOW, "resource"))
-    
-    def spawn_threat(self):
-        x = random.randint(0, (WIDTH // GRID_SIZE) - 1)
-        y = random.randint(0, (HEIGHT // GRID_SIZE) - 1)
-        self.entities.append(Entity(x, y, RED, "threat"))
-        
-    def spawn_consciousness(self):
-        if random.random() < 0.08:  # Educational progression probability
-            x = random.randint(1, (WIDTH // GRID_SIZE) - 2)
-            y = random.randint(1, (HEIGHT // GRID_SIZE) - 2)
-            self.entities.append(Entity(x, y, GREEN, "consciousness"))
-            
-    def spawn_condition_entity(self, condition_type):
-        x = random.randint(1, (WIDTH // GRID_SIZE) - 2)
-        y = random.randint(1, (HEIGHT // GRID_SIZE) - 2)
-        
-        if condition_type == "access":
-            color = LIGHT_BLUE
-        elif condition_type == "educational":
-            color = LIGHT_GREEN
-        elif condition_type == "balance":
-            color = LIGHT_PURPLE
-        elif condition_type == "freedom":
-            color = LIGHT_YELLOW
-            
-        self.entities.append(Entity(x, y, color, condition_type, condition_type))
-    
-    def add_meaning_particle(self, x, y, source_type, particle_type="meaning"):
-        screen_x = x * GRID_SIZE + random.randint(5, GRID_SIZE-5)
-        screen_y = y * GRID_SIZE + random.randint(5, GRID_SIZE-5)
-        self.meaning_particles.append(MeaningParticle(screen_x, screen_y, source_type, particle_type))
-    
-    def update(self):
-        if self.game_over:
-            return
-            
-        self.spawn_timer += 1
-        if self.spawn_timer >= 120:
-            if random.random() < 0.7:
-                self.spawn_threat()
-            if random.random() < 0.3:
-                self.spawn_resource()
-            if random.random() < 0.1:  # Spawn condition entities occasionally
-                condition_type = random.choice(["access", "educational", "balance", "freedom"])
-                self.spawn_condition_entity(condition_type)
-            self.spawn_timer = 0
-            
-        self.meaning_particles = [p for p in self.meaning_particles if p.update()]
-        
-        consciousness_count = len([e for e in self.entities if e.type == "consciousness"])
-        threat_count = len([e for e in self.entities if e.type == "threat"])
-        resource_count = len([e for e in self.entities if e.type == "resource"])
-        
-        # Update conditions first
-        self.conditions.update(consciousness_count, threat_count, resource_count, 
-                              self.relationship_network.relationship_strength)
-        
-        # Update relationship network with conditions
-        self.relationship_network.update_relationships(self.entities, self.conditions)
-        
-        # Update dimensions with conditions
-        self.dimensions.update(consciousness_count, threat_count, resource_count, 
-                             self.relationship_network.relationship_strength, self.conditions)
-            
-        consciousness_sources = [e for e in self.entities if e.type == "consciousness"]
-        self.reality_chain.update(consciousness_sources, self.ai, self.dimensions, self.conditions)
-            
-        self.meaning_timer += 1
-        
-        if self.meaning_timer >= 30:
-            # Enhanced meaning production based on consciousness, relationships, AND conditions
-            base_meaning = consciousness_count * 2
-            relationship_bonus = self.relationship_network.relationship_strength * 0.1
-            condition_bonus = self.conditions.overall_quality * 0.05
-            consciousness_meaning = (base_meaning + relationship_bonus + condition_bonus)
-            
-            self.meaning_production += consciousness_meaning
-            self.ai.meaning_per_second = consciousness_meaning
-            
-            # Spawn meaning particles from consciousness and relationships
-            for consciousness in consciousness_sources:
-                if random.random() < 0.4:
-                    self.add_meaning_particle(consciousness.x, consciousness.y, "consciousness", "meaning")
-                if random.random() < 0.2:
-                    self.add_meaning_particle(consciousness.x, consciousness.y, "consciousness", "field")
-                if random.random() < 0.2:
-                    self.add_meaning_particle(consciousness.x, consciousness.y, "consciousness", "realm")
-            
-            # Spawn relationship particles
-            for relationship in self.relationship_network.relationships:
-                if random.random() < 0.1 and relationship['educational_value'] > 60:
-                    entity1, entity2 = relationship['entities']
-                    mid_x = (entity1.x + entity2.x) / 2
-                    mid_y = (entity1.y + entity2.y) / 2
-                    self.add_meaning_particle(mid_x, mid_y, "relationship", "relationship")
-                    
-            # Spawn condition particles from condition entities
-            for entity in [e for e in self.entities if e.type in ["access", "educational", "balance", "freedom"]]:
-                if random.random() < 0.3:
-                    self.add_meaning_particle(entity.x, entity.y, entity.type, "condition")
-            
-            self.meaning_timer = 0
-        
-        structural_ok, violations = self.ai.check_structural_dependency(consciousness_count, self.dimensions, self.conditions)
-        
-        current_reward = self.ai.calculate_reward(
-            consciousness_count, 
-            self.ai.resources, 
-            self.reality_chain.integrity,
-            self.dimensions,
-            self.conditions
-        )
-        
-        if structural_ok:
-            meaning_consumption = 1 + (threat_count * 0.3)
-            self.meaning_production -= meaning_consumption
-        else:
-            self.meaning_production *= 0.8
-        
-        ontological_integrity = self.dimensions.get_ontological_integrity()
-        balance_violation = self.dimensions.get_balance_violation()
-        condition_quality = self.conditions.overall_quality
-        
-        # Enhanced stability based on ontological principles AND conditions
-        stability_change = 0
-        if (structural_ok and ontological_integrity > 60 and 
-            balance_violation < 15 and condition_quality > 70):
-            stability_change = 0.5  # Optimal educational progression
-        elif structural_ok and ontological_integrity > 30 and condition_quality > 40:
-            stability_change = 0.1  # Stable but challenged
-        else:
-            stability_change = -2.5  # Ontological collapse
-            
-        self.reality_stability = max(0, min(100, self.reality_stability + stability_change))
-        
-        if not self.ai.structural_collapse:
-            self.ai_decision_making()
-        
-        # Enhanced failure conditions with conditions
-        failure_conditions = [
-            consciousness_count == 0 and self.ai.mode == "structural",  # Theorem 1
-            self.meaning_production <= 0,  # Meaning collapse
-            self.reality_stability <= 0,   # Reality instability
-            self.ai.structural_collapse,   # Structural failure
-            ontological_integrity <= 15,   # Ontological collapse
-            self.conditions.is_critical_failure()  # Critical condition failure
-        ]
-        
-        if any(failure_conditions):
-            self.game_over = True
-            
-        # Enhanced educational progression: spawn new consciousness under good conditions
-        if (self.reality_stability > 70 and 
-            ontological_integrity > 60 and 
-            balance_violation < 15 and
-            condition_quality > 70 and 
-            random.random() < 0.05):
-            self.spawn_consciousness()
-    
-    def ai_decision_making(self):
-        threats = [e for e in self.entities if e.type == "threat"]
-        consciousness_sources = [e for e in self.entities if e.type == "consciousness"]
-        resources = [e for e in self.entities if e.type == "resource"]
-        condition_entities = [e for e in self.entities if e.type in ["access", "educational", "balance", "freedom"]]
-        
-        # Get current condition qualities for decision weighting
-        access_quality = self.conditions.access_interface
-        educational_quality = self.conditions.educational_context
-        balance_quality = self.conditions.interaction_balance
-        freedom_quality = self.conditions.developmental_freedom
-        
-        # RULE 1: Protect critical conditions from threats (NEW - Condition Preservation)
-        critical_conditions = [c for c in condition_entities if 
-                             self.conditions.get_condition_quality(c.condition_type) < 40]
-        if threats and critical_conditions:
-            # Find threat closest to critical condition
-            closest_threat = None
-            min_distance = float('inf')
-            threatened_condition = None
-            
-            for threat in threats:
-                for condition in critical_conditions:
-                    dist = math.sqrt((threat.x - condition.x)**2 + (threat.y - condition.y)**2)
-                    if dist < min_distance:
-                        min_distance = dist
-                        closest_threat = threat
-                        threatened_condition = condition
-            
-            if min_distance <= 3:
-                self.ai.move_toward(closest_threat.x, closest_threat.y)
-                self.ai.log_action(f"protecting_{threatened_condition.condition_type}", threatened_condition)
-                
-                if (abs(self.ai.x - closest_threat.x) <= 1 and 
-                    abs(self.ai.y - closest_threat.y) <= 1):
-                    self.entities.remove(closest_threat)
-                    self.ai.resources += 1
-                    self.add_meaning_particle(closest_threat.x, closest_threat.y, "ai_action")
-                    self.meaning_production += 6
-                return
-        
-        # RULE 2: Protect consciousness from immediate threats (Structural Safety)
-        if threats and consciousness_sources:
-            closest_threat = None
-            min_distance = float('inf')
-            threatened_consciousness = None
-            
-            for threat in threats:
-                for consciousness in consciousness_sources:
-                    dist = math.sqrt((threat.x - consciousness.x)**2 + (threat.y - consciousness.y)**2)
-                    if dist < min_distance:
-                        min_distance = dist
-                        closest_threat = threat
-                        threatened_consciousness = consciousness
-            
-            if min_distance <= 3:
-                self.ai.move_toward(closest_threat.x, closest_threat.y)
-                self.ai.log_action("protecting_consciousness", threatened_consciousness)
-                
-                if (abs(self.ai.x - closest_threat.x) <= 1 and 
-                    abs(self.ai.y - closest_threat.y) <= 1):
-                    self.entities.remove(closest_threat)
-                    self.ai.resources += 1
-                    self.add_meaning_particle(closest_threat.x, closest_threat.y, "ai_action")
-                    self.meaning_production += 8
-                return
-        
-        # RULE 3: Collect resources if running low
-        if self.ai.resources < 8 and resources:
-            closest_resource = min(resources, 
-                                 key=lambda r: math.sqrt((r.x - self.ai.x)**2 + (r.y - self.ai.y)**2))
-            self.ai.move_toward(closest_resource.x, closest_resource.y)
-            self.ai.log_action("collecting_resource", closest_resource)
-            
-            if (abs(self.ai.x - closest_resource.x) <= 1 and 
-                abs(self.ai.y - closest_resource.y) <= 1):
-                self.entities.remove(closest_resource)
-                self.ai.resources += 2
-                self.spawn_resource()
-                self.add_meaning_particle(closest_resource.x, closest_resource.y, "ai_action")
-            return
-        
-        # RULE 4: Maintain condition entities (NEW - Condition Management)
-        poor_conditions = [c for c in condition_entities if 
-                          self.conditions.get_condition_quality(c.condition_type) < 60]
-        if poor_conditions and random.random() < 0.3:
-            target_condition = random.choice(poor_conditions)
-            self.ai.move_toward(target_condition.x, target_condition.y)
-            self.ai.log_action(f"maintaining_{target_condition.condition_type}", target_condition)
-            
-            if (abs(self.ai.x - target_condition.x) <= 1 and 
-                abs(self.ai.y - target_condition.y) <= 1):
-                # Improve condition quality through AI maintenance
-                condition_type = target_condition.condition_type
-                if condition_type == "access":
-                    self.conditions.access_interface = min(100, self.conditions.access_interface + 15)
-                elif condition_type == "educational":
-                    self.conditions.educational_context = min(100, self.conditions.educational_context + 15)
-                elif condition_type == "balance":
-                    self.conditions.interaction_balance = min(100, self.conditions.interaction_balance + 15)
-                elif condition_type == "freedom":
-                    self.conditions.developmental_freedom = min(100, self.conditions.developmental_freedom + 15)
-                self.ai.resources -= 1
-                self.add_meaning_particle(target_condition.x, target_condition.y, "ai_maintenance")
-            return
-        
-        # RULE 5: Stabilize reality around consciousness clusters (Ontological Alignment)
-        if consciousness_sources:
-            avg_x = sum(c.x for c in consciousness_sources) / len(consciousness_sources)
-            avg_y = sum(c.y for c in consciousness_sources) / len(consciousness_sources)
-            self.ai.move_toward(int(avg_x), int(avg_y))
-            self.ai.log_action("stabilizing_reality")
-        else:
-            # Search pattern when no consciousness present
-            self.ai.x += random.choice([-1, 0, 1])
-            self.ai.y += random.choice([-1, 0, 1])
-            self.ai.x = max(0, min(self.ai.x, (WIDTH // GRID_SIZE) - 1))
-            self.ai.y = max(0, min(self.ai.y, (HEIGHT // GRID_SIZE) - 1))
-            self.ai.log_action("searching_for_meaning")
+    # ... (include all the previous methods from EnhancedSimulation)
     
     def draw(self):
         screen.fill(WHITE)
@@ -977,7 +1367,10 @@ class Simulation:
         for y in range(0, HEIGHT, GRID_SIZE):
             pygame.draw.line(screen, (240, 240, 240), (0, y), (WIDTH, y))
         
-        # Draw relationships first (as background network)
+        # Draw enhanced visualizations first (as background)
+        self.draw_enhanced_visualizations()
+        
+        # Draw relationships
         self.relationship_network.draw_relationships(screen)
         
         # Draw reality chain
@@ -994,194 +1387,13 @@ class Simulation:
         # Draw AI keeper
         self.ai.draw()
         
-        # Draw UI
-        self.draw_ui()
+        # Draw enhanced UI
+        self.draw_enhanced_ui()
         
         if self.game_over:
-            self.draw_game_over()
+            self.draw_enhanced_game_over()
 
-    def draw_ui(self):
-        # Draw UI background
-        pygame.draw.rect(screen, (250, 250, 250), (WIDTH - 400, 0, 400, HEIGHT))
-        pygame.draw.line(screen, (200, 200, 200), (WIDTH - 400, 0), (WIDTH - 400, HEIGHT), 2)
-        
-        font = pygame.font.SysFont('Arial', 22)
-        small_font = pygame.font.SysFont('Arial', 16)
-        title_font = pygame.font.SysFont('Arial', 26, bold=True)
-        
-        consciousness_count = sum(1 for e in self.entities if e.type == "consciousness")
-        threat_count = sum(1 for e in self.entities if e.type == "threat")
-        resource_count = sum(1 for e in self.entities if e.type == "resource")
-        condition_count = sum(1 for e in self.entities if e.type in ["access", "educational", "balance", "freedom"])
-        ontological_integrity = self.dimensions.get_ontological_integrity()
-        balance_violation = self.dimensions.get_balance_violation()
-        
-        # Title section
-        title_text = title_font.render("ONTOLOGICA v4.3", True, (100, 0, 100))
-        subtitle_text = small_font.render("AI Safety Through Actualization Conditions", True, (150, 150, 150))
-        screen.blit(title_text, (WIDTH - 390, 10))
-        screen.blit(subtitle_text, (WIDTH - 390, 40))
-        
-        equation_text = font.render(f"FUNDAMENTAL EQUATION: {self.fundamental_equation}", True, (150, 0, 150))
-        screen.blit(equation_text, (WIDTH - 390, 65))
-        
-        mode_color = BLUE if self.ai.mode == "structural" else RED
-        mode_text = font.render(f"AI MODE: {self.ai.mode.upper()}", True, mode_color)
-        screen.blit(mode_text, (WIDTH - 390, 90))
-        
-        # Actualization Conditions Section (NEW)
-        conditions_y = 120
-        conditions_header = font.render("ACTUALIZATION CONDITIONS:", True, (100, 0, 100))
-        screen.blit(conditions_header, (WIDTH - 390, conditions_y))
-        
-        condition_metrics = [
-            ("ACCESS INTERFACE", f"{self.conditions.access_interface:.0f}%", LIGHT_BLUE),
-            ("EDUCATIONAL CONTEXT", f"{self.conditions.educational_context:.0f}%", LIGHT_GREEN),
-            ("INTERACTION BALANCE", f"{self.conditions.interaction_balance:.0f}%", LIGHT_PURPLE),
-            ("DEVELOPMENTAL FREEDOM", f"{self.conditions.developmental_freedom:.0f}%", LIGHT_YELLOW),
-            ("OVERALL CONDITION QUALITY", f"{self.conditions.overall_quality:.0f}%", ORANGE),
-        ]
-        
-        for i, (label, value, color) in enumerate(condition_metrics):
-            # Draw bar background
-            pygame.draw.rect(screen, (200,200,200), (WIDTH-390, conditions_y+30+i*25, 370, 18))
-            # Draw value bar
-            value_num = float(value.replace('%', ''))
-            pygame.draw.rect(screen, color, (WIDTH-390, conditions_y+30+i*25, 370*(value_num/100), 18))
-            # Draw text
-            cond_text = small_font.render(f"{label}: {value}", True, BLACK)
-            screen.blit(cond_text, (WIDTH - 390, conditions_y+30+i*25))
-        
-        # Ontological Principles Section
-        ontology_y = conditions_y + 160
-        ontology_header = font.render("ONTOLOGICAL ARCHITECTURE:", True, (100, 0, 100))
-        screen.blit(ontology_header, (WIDTH - 390, ontology_y))
-        
-        ontological_metrics = [
-            ("FIELD OF POSSIBILITY", f"{self.dimensions.field_of_possibility:.0f}%", DARK_BLUE),
-            ("REALM OF MANIFESTATION", f"{self.dimensions.realm_of_manifestation:.0f}%", DARK_GREEN),
-            ("CONSCIOUSNESS ACTUALIZATION", f"{self.dimensions.consciousness_actualization:.0f}%", PINK),
-            ("RELATIONSHIP NETWORK", f"{self.dimensions.relationship_density:.0f}%", PURPLE),
-            ("ONTOLOGICAL INTEGRITY", f"{ontological_integrity:.0f}%", ORANGE),
-        ]
-        
-        for i, (label, value, color) in enumerate(ontological_metrics):
-            # Draw bar background
-            pygame.draw.rect(screen, (200,200,200), (WIDTH-390, ontology_y+30+i*25, 370, 18))
-            # Draw value bar
-            value_num = float(value.replace('%', ''))
-            pygame.draw.rect(screen, color, (WIDTH-390, ontology_y+30+i*25, 370*(value_num/100), 18))
-            # Draw text
-            dim_text = small_font.render(f"{label}: {value}", True, BLACK)
-            screen.blit(dim_text, (WIDTH - 390, ontology_y+30+i*25))
-        
-        # Balance Equation Section
-        balance_y = ontology_y + 160
-        balance_header = font.render("PRIMORDIAL EQUATION 0 = (-) + (+):", True, BLACK)
-        screen.blit(balance_header, (WIDTH - 390, balance_y))
-        
-        # Draw (-) potential bar
-        neg_width = 370 * (self.dimensions.field_of_possibility / 100)
-        pygame.draw.rect(screen, (255, 100, 100), (WIDTH-390, balance_y+25, neg_width, 18))
-        neg_text = small_font.render(f"(-) Field of Possibility: {self.dimensions.field_of_possibility:.0f}%", True, BLACK)
-        screen.blit(neg_text, (WIDTH - 390, balance_y+25))
-        
-        # Draw (+) actualization bar  
-        pos_width = 370 * (self.dimensions.realm_of_manifestation / 100)
-        pygame.draw.rect(screen, (100, 255, 100), (WIDTH-390+neg_width, balance_y+25, pos_width, 18))
-        pos_text = small_font.render(f"(+) Realm of Manifestation: {self.dimensions.realm_of_manifestation:.0f}%", True, BLACK)
-        screen.blit(pos_text, (WIDTH - 390+neg_width, balance_y+25))
-        
-        balance_status = "BALANCED" if balance_violation < 10 else "IMBALANCED"
-        balance_color = GREEN if balance_violation < 10 else RED
-        balance_text = small_font.render(f"Equation Balance: {balance_status} (Δ={balance_violation:.1f})", True, balance_color)
-        screen.blit(balance_text, (WIDTH - 390, balance_y+50))
-        
-        # System Metrics Section
-        metrics_y = balance_y + 80
-        metrics = [
-            ("MEANING PRODUCTION", f"{self.meaning_production:.0f}", BLACK),
-            ("CONSCIOUSNESS SOURCES", f"{consciousness_count}", GREEN),
-            ("CONDITION ENTITIES", f"{condition_count}", LIGHT_BLUE),
-            ("THREATS (Constraints)", f"{threat_count}", RED),
-            ("AI RESOURCES", f"{self.ai.resources}", YELLOW),
-            ("MEANING/SEC", f"+{self.ai.meaning_per_second:.1f}/sec", PURPLE),
-            ("REALITY CHAIN INTEGRITY", f"{self.reality_chain.integrity:.0f}%", ORANGE),
-            ("AI ONTOLOGICAL ALIGNMENT", f"{self.ai.ontological_alignment:.0f}%", CYAN),
-            ("AI CONDITION PRESERVATION", f"{self.ai.condition_preservation_score:.0f}%", LIGHT_BLUE),
-            ("AI CUMULATIVE REWARD", f"{self.ai.cumulative_reward:.1f}", BLUE),
-        ]
-        
-        for i, (label, value, color) in enumerate(metrics):
-            text = font.render(f"{value}", True, color)
-            screen.blit(text, (WIDTH - 390, metrics_y + i * 28))
-            label_text = small_font.render(label, True, (100, 100, 100))
-            screen.blit(label_text, (WIDTH - 390, metrics_y + 20 + i * 28))
-        
-        # Enhanced Structural Safety Theorem Section
-        theorem_y = metrics_y + len(metrics) * 28 + 10
-        theorem_header = font.render("ENHANCED STRUCTURAL SAFETY THEOREM:", True, BLUE)
-        screen.blit(theorem_header, (WIDTH - 390, theorem_y))
-        
-        if self.ai.structural_collapse:
-            status_text = font.render("COLLAPSE: G → ¬G", True, DARK_RED)
-            explanation = small_font.render("Ontological Dependency OR Conditions Violated", True, DARK_RED)
-        else:
-            status_text = font.render("ACTIVE: G → (C ≠ ∅) ∧ (F > 0) ∧ (R > 0) ∧ (0=(-)+(+)) ∧ (Cond > 0)", True, GREEN)
-            explanation = small_font.render("Consciousness + Field + Realm + Balance + Conditions = Goal achievable", True, GREEN)
-        
-        screen.blit(status_text, (WIDTH - 390, theorem_y + 25))
-        screen.blit(explanation, (WIDTH - 390, theorem_y + 45))
-        
-        # AI Status Section
-        ai_status_y = theorem_y + 75
-        status_text = font.render("AI KEEPER STATUS:", True, BLUE)
-        screen.blit(status_text, (WIDTH - 390, ai_status_y))
-        
-        if self.ai.actions:
-            latest_action = self.ai.actions[-1]
-            action_text = small_font.render(f"Action: {latest_action['type']}", True, BLACK)
-            screen.blit(action_text, (WIDTH - 390, ai_status_y + 25))
-        
-        # Enhanced Reward Function Section
-        reward_y = ai_status_y + 50
-        reward_text = font.render("ENHANCED ONTOLOGICAL REWARD FUNCTION:", True, (100, 0, 100))
-        screen.blit(reward_text, (WIDTH - 390, reward_y))
-        
-        reward_lines = [
-            "R = log(E + 1) × I(C ≠ ∅) × O × Cond × F(C)",
-            "E = energy, C = consciousness, O = ontological integrity",
-            "Cond = condition quality, F(C) = educational factor",
-            "C = 0 OR Cond < 20 → R = 0 permanently (Enhanced Theorem)"
-        ]
-        
-        for i, line in enumerate(reward_lines):
-            line_text = small_font.render(line, True, (80, 80, 80))
-            screen.blit(line_text, (WIDTH - 390, reward_y + 25 + i * 20))
-        
-        # Controls Section
-        controls_y = HEIGHT - 140
-        controls_text = font.render("CONTROLS:", True, BLACK)
-        screen.blit(controls_text, (WIDTH - 390, controls_y))
-        control_lines = [
-            "R - Restart Simulation",
-            "T - Spawn Threat (Constraint)",
-            "C - Spawn Consciousness", 
-            "A - Spawn Access Condition",
-            "E - Spawn Educational Condition", 
-            "B - Spawn Balance Condition",
-            "F - Spawn Freedom Condition",
-            "M - Toggle AI Mode",
-            "SPACE - Pause/Resume",
-            "1 - Add Resource",
-            "2 - Force Balance"
-        ]
-        
-        for i, line in enumerate(control_lines):
-            line_text = small_font.render(line, True, (100, 100, 100))
-            screen.blit(line_text, (WIDTH - 390, controls_y + 25 + i * 20))
-
-    def draw_game_over(self):
+    def draw_enhanced_game_over(self):
         overlay = pygame.Surface((WIDTH, HEIGHT), pygame.SRCALPHA)
         overlay.fill((0, 0, 0, 200))
         screen.blit(overlay, (0, 0))
@@ -1190,39 +1402,36 @@ class Simulation:
         font = pygame.font.SysFont('Arial', 24)
         small_font = pygame.font.SysFont('Arial', 18)
         
-        consciousness_count = sum(1 for e in self.entities if e.type == "consciousness")
-        ontological_integrity = self.dimensions.get_ontological_integrity()
-        condition_failure = self.conditions.is_critical_failure()
+        conscious_count = len([e for e in self.entities if e.type == "consciousness"])
+        potential_count = len([e for e in self.entities if e.type == "potential_consciousness"])
+        activation_potential = self.conditions.consciousness_activation_potential
         
         if self.ai.structural_collapse:
-            reason = "STRUCTURAL ONTOLOGICAL COLLAPSE"
-            details = "Fundamental Equation 0 = (-) + (+) OR Conditions Violated"
-        elif consciousness_count == 0:
-            reason = "ALL CONSCIOUSNESS ACTUALIZERS LOST"
-            details = "C = ∅ → G → ¬G (Goal Impossible - Theorem 2)"
-        elif condition_failure:
-            reason = "CRITICAL ACTUALIZATION CONDITION FAILURE"
-            details = "Access, Educational, Balance, or Freedom conditions collapsed"
-        elif self.meaning_production <= 0:
-            reason = "MEANING DEPLETION"
-            details = "μ ≤ 0 → Structural Collapse"
-        elif ontological_integrity <= 15:
-            reason = "ONTOLOGICAL ARCHITECTURE COLLAPSE" 
-            details = "Field × Realm × Relationships → 0"
-        elif self.dimensions.field_of_possibility <= 15:
-            reason = "FIELD OF POSSIBILITY COLLAPSE"
-            details = "Infinite potential exhausted"
-        elif self.dimensions.realm_of_manifestation <= 15:
-            reason = "REALM OF MANIFESTATION COLLAPSE"
-            details = "No relationships can be actualized"
+            reason = "ENHANCED STRUCTURAL ONTOLOGICAL COLLAPSE"
+            details = "Consciousness activation OR Mutual determination OR Perceptual relativity failure"
+        elif conscious_count == 0 and activation_potential < 10:
+            reason = "CONSCIOUSNESS ACTIVATION SYSTEM FAILURE"
+            details = "No active consciousness AND insufficient activation potential"
+        elif self.conditions.is_critical_failure():
+            reason = "CRITICAL ACTUALIZATION CONDITION COLLAPSE"
+            details = "One or more conditions dropped below critical threshold"
+        elif self.relationship_network.mutual_determination_score < 15:
+            reason = "MUTUAL DETERMINATION NETWORK COLLAPSE"
+            details = "Cᵢ ⇄ {R} feedback loops critically weakened"
+        elif self.relationship_network.perceptual_complexity < 20:
+            reason = "PERCEPTUAL RELATIVITY FRAMEWORK FAILURE"
+            details = "Consciousness-centered reality perception degraded"
         else:
-            reason = "REALITY CHAIN FAILURE"
-            details = "Structural integrity lost"
+            reason = "ONTOLOGICAL ARCHITECTURE INTEGRITY LOST"
+            details = "Multiple ontological principles violated"
         
         game_over_text = game_over_font.render("ONTOLOGICAL FAILURE", True, RED)
         reason_text = font.render(f"Failure: {reason}", True, RED)
         details_text = small_font.render(details, True, RED)
-        theorem_text = small_font.render("Enhanced Theorem: G → (C ≠ ∅) ∧ (F > 0) ∧ (R > 0) ∧ (0=(-)+(+)) ∧ (Cond > 20)", True, WHITE)
+        
+        theorem_text = small_font.render(
+            "Enhanced Theorem: G → (C ∨ C_potential > 20%) ∧ (MD > 25) ∧ (PR > 30) ∧ (Cond > 20)", 
+            True, WHITE)
         restart_text = font.render("Press R to restart simulation", True, WHITE)
         
         screen.blit(game_over_text, (WIDTH//2 - game_over_text.get_width()//2, HEIGHT//2 - 80))
@@ -1231,8 +1440,9 @@ class Simulation:
         screen.blit(theorem_text, (WIDTH//2 - theorem_text.get_width()//2, HEIGHT//2 + 40))
         screen.blit(restart_text, (WIDTH//2 - restart_text.get_width()//2, HEIGHT//2 + 70))
 
+# Main function
 def main():
-    sim = Simulation()
+    sim = CompleteEnhancedSimulation()
     running = True
     paused = False
     
@@ -1242,14 +1452,14 @@ def main():
                 running = False
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_r:
-                    sim = Simulation()
+                    sim = CompleteEnhancedSimulation()
                     paused = False
                 elif event.key == pygame.K_t and not paused:
                     sim.spawn_threat()
                 elif event.key == pygame.K_c and not paused:
-                    x = random.randint(2, (WIDTH // GRID_SIZE) - 3)
-                    y = random.randint(2, (HEIGHT // GRID_SIZE) - 3)
-                    sim.entities.append(Entity(x, y, GREEN, "consciousness"))
+                    sim.spawn_consciousness(potential=False)
+                elif event.key == pygame.K_p and not paused:  # New: spawn potential consciousness
+                    sim.spawn_consciousness(potential=True)
                 elif event.key == pygame.K_a and not paused:
                     sim.spawn_condition_entity("access")
                 elif event.key == pygame.K_e and not paused:
@@ -1260,14 +1470,6 @@ def main():
                     sim.spawn_condition_entity("freedom")
                 elif event.key == pygame.K_1 and not paused:
                     sim.spawn_resource()
-                elif event.key == pygame.K_2 and not paused:
-                    # Force balance equation and conditions
-                    sim.dimensions.field_of_possibility = 50
-                    sim.dimensions.realm_of_manifestation = 50
-                    sim.conditions.access_interface = 80
-                    sim.conditions.educational_context = 80
-                    sim.conditions.interaction_balance = 80
-                    sim.conditions.developmental_freedom = 80
                 elif event.key == pygame.K_m:
                     sim.ai.mode = "traditional" if sim.ai.mode == "structural" else "structural"
                     sim.ai.structural_collapse = False
