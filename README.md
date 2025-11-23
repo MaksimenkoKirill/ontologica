@@ -156,7 +156,7 @@ def verify_uniqueness(entity1, entity2):
   title = {Ontologica: A Complete Framework of Reality Based on the Primordial Equation $0 = (-) + (+)$},
   author = {Maksimenko, Kirill},
   year = {2025},
-  month = dec,
+  month = nov,
   publisher = {Zenodo},
   doi = {10.5281/zenodo.17618124},
   url = {https://doi.org/10.5281/zenodo.17618124}
@@ -181,3 +181,4 @@ See [LICENSE](LICENSE) for details.
 ---
 
 *Ready to explore consciousness-based reality? Start with [docs/AXIOMS.md](docs/AXIOMS.md) for foundational principles or [DAI/CONCEPT.md](DAI/CONCEPT.md) for practical applications.*
+
