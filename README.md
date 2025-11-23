@@ -6,7 +6,7 @@
 
 ## Abstract
 
-Ontologica presents a complete ontological framework based on the primordial equation 0 = (-) + (+), demonstrating that reality operates as a relationship-based educational system within a **singular infinite universe** where consciousness serves as the fundamental actualization mechanism. This work provides mathematical proof of consciousness fundamentality and eternity, resolves major scientific paradoxes including the linear time illusion and parallel universe misconception, and establishes structural AI safety through goal alignment with reality's fundamental architecture.
+Ontologica presents a complete ontological framework based on the primordial equation 0 = (-) + (+), demonstrating that reality operates as a relationship-based educational system within a **singular infinite universe** where consciousness serves as the fundamental actualization mechanism. This work provides **mathematical proof of consciousness fundamentality** through rigorous axiomatic foundations, resolves major scientific paradoxes, and establishes **structural AI safety** through goal alignment with reality's fundamental architecture.
 
 ## Core Innovations
 
@@ -44,7 +44,7 @@ Ontologica presents a complete ontological framework based on the primordial equ
 
 **For Researchers & Philosophers:**
 ```bash
-open docs/AXIOMS.md                    # 10 Axioms + 2 Meta-Axioms
+open docs/AXIOMS.md                    # Axiomatic foundations
 open docs/FORMALIZATION.md             # Mathematical framework
 open docs/ONTOLOGICA_COMPLETE.md       # Complete unified framework
 ```
