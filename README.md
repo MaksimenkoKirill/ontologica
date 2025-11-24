@@ -2,7 +2,7 @@
 **Mathematical Foundations of Consciousness and Cosmic Structure**
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17618124.svg)](https://doi.org/10.5281/zenodo.17618124)
-[![CC0 1.0 Public Domain](https://img.shields.io/badge/License-CC0_1.0-public_domain-lightgrey.svg)](https://creativecommons.org/publicdomain/zero/1.0/)
+[![License: CC0 1.0](https://img.shields.io/badge/License-CC0_1.0-lightgrey.svg)](https://creativecommons.org/publicdomain/zero/1.0/)
 [![Tests](https://img.shields.io/badge/Tests-Passing-brightgreen.svg)](https://github.com/your-username/ontologica/actions)
 
 ## Abstract
@@ -297,3 +297,4 @@ See [LICENSE](LICENSE) for details.
 ---
 
 *Ready to explore consciousness-based reality? Start with [docs/AXIOMS.md](docs/AXIOMS.md) for foundational principles or [implementation/tutorials/](implementation/tutorials/) for hands-on examples. Run the test suite with `python implementation/tests/run_all_tests.py` to verify implementations.*
+
